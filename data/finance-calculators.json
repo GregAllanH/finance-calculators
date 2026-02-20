@@ -1,0 +1,191 @@
+[
+  {
+    "slug": "tfsa-contribution-growth",
+    "title": "TFSA Contribution & Growth Estimator (2026 Canada)",
+    "resultUnit": "Projected Value",
+    "fields": [
+      {
+        "name": "currentRoom",
+        "label": "Current Unused TFSA Room",
+        "type": "number",
+        "unit": "$",
+        "placeholder": "From CRA My Account"
+      },
+      {
+        "name": "annualContribution",
+        "label": "Planned Annual Contribution",
+        "type": "number",
+        "unit": "$ / year",
+        "placeholder": "e.g. 7000"
+      },
+      {
+        "name": "years",
+        "label": "Years Until Withdrawal",
+        "type": "number",
+        "unit": "years",
+        "placeholder": "e.g. 20"
+      },
+      {
+        "name": "annualReturn",
+        "label": "Expected Annual Return",
+        "type": "number",
+        "unit": "%",
+        "placeholder": "e.g. 6"
+      }
+    ],
+    "formula": "currentRoom + annualContribution * ((pow(1 + (annualReturn/100), years) - 1) / (annualReturn/100)) * (1 + (annualReturn/100))",
+    "notes": "Compound interest estimate only. 2026 TFSA limit: $7,000. Cumulative max room ~$109,000 if eligible since 2009 and never contributed. Not financial advice — consult CRA or a professional."
+  },
+  {
+    "slug": "tfsa-vs-rrsp",
+    "title": "TFSA vs RRSP Comparator (2026 Canada)",
+    "resultUnit": "After-Tax Value at Retirement",
+    "fields": [
+      {
+        "name": "currentTaxRate",
+        "label": "Current Marginal Tax Rate",
+        "type": "number",
+        "unit": "%",
+        "placeholder": "e.g. 30 (your bracket now)"
+      },
+      {
+        "name": "futureTaxRate",
+        "label": "Expected Marginal Tax Rate in Retirement",
+        "type": "number",
+        "unit": "%",
+        "placeholder": "e.g. 25 (lower in retirement?)"
+      },
+      {
+        "name": "annualContribution",
+        "label": "Annual Contribution Amount",
+        "type": "number",
+        "unit": "$",
+        "placeholder": "e.g. 7000"
+      },
+      {
+        "name": "years",
+        "label": "Years Until Retirement/Withdrawal",
+        "type": "number",
+        "unit": "years",
+        "placeholder": "e.g. 20"
+      },
+      {
+        "name": "annualReturn",
+        "label": "Expected Annual Return",
+        "type": "number",
+        "unit": "%",
+        "placeholder": "e.g. 6"
+      }
+    ],
+    "formula_tfsa": "annualContribution * ((pow(1 + (annualReturn/100), years) - 1) / (annualReturn/100)) * (1 + (annualReturn/100))",
+    "formula_rrsp": "annualContribution * (1 + currentTaxRate/100) * ((pow(1 + (annualReturn/100), years) - 1) / (annualReturn/100)) * (1 + (annualReturn/100)) * (1 - futureTaxRate/100)",
+    "notes": "Compares after-tax value assuming same investments. RRSP gets upfront tax deduction (refund reinvested); withdrawal taxed later. TFSA grows tax-free. Estimates only — not advice. Verify limits with CRA. 2026 TFSA limit: $7,000; RRSP limit: 18% of earned income up to ~$33,810."
+  },{
+  "slug": "max-house-affordability",
+  "title": "Max House Affordability Calculator (Canada 2026)",
+  "resultUnit": "Maximum Home Price",
+  "fields": [
+    {
+      "name": "grossIncomeYearly",
+      "label": "Gross Annual Household Income",
+      "type": "number",
+      "unit": "$",
+      "placeholder": "e.g. 100000"
+    },
+    {
+      "name": "monthlyDebtPayments",
+      "label": "Total Monthly Debt Payments (loans, credit cards, etc.)",
+      "type": "number",
+      "unit": "$",
+      "placeholder": "e.g. 500"
+    },
+    {
+      "name": "downPaymentAmount",
+      "label": "Down Payment Amount",
+      "type": "number",
+      "unit": "$",
+      "placeholder": "e.g. 50000"
+    },
+    {
+      "name": "interestRate",
+      "label": "Annual Interest Rate",
+      "type": "number",
+      "unit": "%",
+      "placeholder": "e.g. 4.5"
+    },
+    {
+      "name": "amortizationYears",
+      "label": "Amortization Period",
+      "type": "number",
+      "unit": "years",
+      "placeholder": "e.g. 25"
+    },
+    {
+      "name": "propertyTaxYearly",
+      "label": "Estimated Annual Property Tax",
+      "type": "number",
+      "unit": "$",
+      "placeholder": "e.g. 3000"
+    },
+    {
+      "name": "heatingCostsMonthly",
+      "label": "Estimated Monthly Heating Costs",
+      "type": "number",
+      "unit": "$",
+      "placeholder": "e.g. 150"
+    }
+  ],
+  "notes": "Uses GDS ratio ≤32% and TDS ≤44% (common Canadian lender guidelines). Stress test not included. CMHC insurance not factored in affordability. Estimates only — not advice. Verify with lender. Rates and rules change."
+},
+  {
+    "slug": "mortgage-payment-affordability",
+    "title": "Mortgage Payment & Affordability Calculator (Canada 2026)",
+    "resultUnit": "Monthly Payment",
+    "fields": [
+      {
+        "name": "purchasePrice",
+        "label": "Purchase Price",
+        "type": "number",
+        "unit": "$",
+        "placeholder": "e.g. 450000"
+      },
+      {
+        "name": "downPaymentPercent",
+        "label": "Down Payment (%)",
+        "type": "number",
+        "unit": "%",
+        "placeholder": "e.g. 10 (5–20% typical)"
+      },
+      {
+        "name": "interestRate",
+        "label": "Annual Interest Rate",
+        "type": "number",
+        "unit": "%",
+        "placeholder": "e.g. 4.5"
+      },
+      {
+        "name": "amortizationYears",
+        "label": "Amortization Period",
+        "type": "number",
+        "unit": "years",
+        "placeholder": "e.g. 25"
+      },
+      {
+        "name": "propertyTaxYearly",
+        "label": "Annual Property Tax",
+        "type": "number",
+        "unit": "$",
+        "placeholder": "e.g. 3000"
+      },
+      {
+        "name": "heatingCostsMonthly",
+        "label": "Monthly Heating Costs",
+        "type": "number",
+        "unit": "$",
+        "placeholder": "e.g. 150"
+      }
+    ],
+    "formula_monthly_payment": "totalPrincipal * (monthlyRate * pow(1 + monthlyRate, periods)) / (pow(1 + monthlyRate, periods) - 1)",
+    "notes": "Standard amortization formula. CMHC insurance added if down payment <20%. Total cost includes property tax + heat. Estimates only — not advice. Stress test (rate +2%) not included here. Verify with lender. Rates and rules change."
+  }
+]
