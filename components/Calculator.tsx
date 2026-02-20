@@ -24,6 +24,7 @@ interface CalculatorProps {
     formula?: string;          // ← add this
     formula_tfsa?: string;     // ← add this
     formula_rrsp?: string;     // ← add this
+    
     // Add any other fields your data source might have
   };
 }
@@ -262,21 +263,21 @@ export default function Calculator({
               className="w-full sm:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
               onChange={(e) => {
                 const province = e.target.value;
-                const suggestedRates = {
-                  'PE': 41.37,
-                  'ON': 43.41,
-                  'QC': 48.7,
-                  'BC': 40.7,
-                  'AB': 38,
-                  'MB': 40.75,
-                  'SK': 40.5,
-                  'NS': 45.25,
-                  'NB': 43,
-                  'NL': 43.3,
-                  'YT': 38,
-                  'NT': 37.05,
-                  'NU': 37.05,
-                };
+                const suggestedRates: { [key: string]: number } = {
+                      'PE': 41.37,
+                      'ON': 43.41,
+                      'QC': 48.7,
+                      'BC': 40.7,
+                      'AB': 38,
+                      'MB': 40.75,
+                      'SK': 40.5,
+                      'NS': 45.25,
+                      'NB': 43,
+                      'NL': 43.3,
+                      'YT': 38,
+                      'NT': 37.05,
+                      'NU': 37.05,
+                    };  
                 const suggestedRate = suggestedRates[province] || '';
                 if (suggestedRate) {
                   setValues((prev) => ({
