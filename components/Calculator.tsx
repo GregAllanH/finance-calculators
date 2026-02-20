@@ -21,7 +21,10 @@ interface CalculatorProps {
   resultUnit: string;
   calcData: {
     slug: string;
-    // Add more fields if needed
+    formula?: string;          // ← add this
+    formula_tfsa?: string;     // ← add this
+    formula_rrsp?: string;     // ← add this
+    // Add any other fields your data source might have
   };
 }
 
