@@ -430,32 +430,36 @@ const calculate = () => {
               <p>CMHC premium (if applicable): ${result.cmhcPremium != null ? Math.round(Number(result.cmhcPremium)).toLocaleString('en-CA') : '—'}</p>
             </div>
           </div>
-        ) : calcData.slug === 'max-house-affordability' ? (
+        ) : calcData.slug === 'mortgage-payment-affordability' ? (
           <div className="space-y-6">
-            <div className="text-center bg-purple-50 p-6 rounded-xl">
-              <p className="text-lg font-medium text-gray-700 mb-2">Maximum Home Price You Can Afford</p>
-              <p className="text-5xl font-bold text-purple-600">
-                ${result.maxPrice != null ? Math.round(Number(result.maxPrice)).toLocaleString('en-CA') : '—'}
-              </p>
-            </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="text-center">
-                <p className="text-lg font-medium text-gray-700">Max Monthly Mortgage Payment</p>
-                <p className="text-3xl font-bold text-purple-600">
-                  ${result.maxMortgagePayment != null ? Math.round(Number(result.maxMortgagePayment)).toLocaleString('en-CA') : '—'}
+              <div className="text-center bg-blue-50 p-6 rounded-xl">
+                <p className="text-lg font-medium text-gray-700 mb-2">Monthly Mortgage Payment</p>
+                <p className="text-4xl font-bold text-blue-600">
+                  ${typeof result === 'object' && result.monthlyPayment != null 
+                    ? Math.round(Number(result.monthlyPayment)).toLocaleString('en-CA') 
+                    : '—'}
                 </p>
               </div>
 
-              <div className="text-center">
-                <p className="text-lg font-medium text-gray-700">GDS / TDS Ratios</p>
-                <p className="text-xl">GDS: {result.gdsRatio || '—'} | TDS: {result.tdsRatio || '—'}</p>
+              <div className="text-center bg-green-50 p-6 rounded-xl">
+                <p className="text-lg font-medium text-gray-700 mb-2">Total Monthly Cost (incl. tax & heat)</p>
+                <p className="text-4xl font-bold text-green-600">
+                  ${typeof result === 'object' && result.totalMonthly != null 
+                    ? Math.round(Number(result.totalMonthly)).toLocaleString('en-CA') 
+                    : '—'}
+                </p>
               </div>
             </div>
 
-            <p className="text-center text-gray-600 mt-4">
-              Based on GDS ≤32% and TDS ≤44%. CMHC insurance not included in affordability.
-            </p>
+            <div className="text-center text-gray-600 mt-4 space-y-1">
+              <p>Principal borrowed: ${typeof result === 'object' && result.principal != null 
+                ? Math.round(Number(result.principal)).toLocaleString('en-CA') 
+                : '—'}</p>
+              <p>CMHC premium (if applicable): ${typeof result === 'object' && result.cmhcPremium != null 
+                ? Math.round(Number(result.cmhcPremium)).toLocaleString('en-CA') 
+                : '—'}</p>
+            </div>
           </div>
         ) : (
           // TFSA growth or TFSA vs RRSP
