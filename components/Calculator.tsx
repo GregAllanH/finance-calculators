@@ -455,18 +455,18 @@ const calculate = () => {
   </p>
   <p className="text-2xl md:text-3xl font-bold text-gray-900">
   {calcData.slug === 'tfsa-contribution-growth'
-    ? (!isNaN(result as number)
-        ? Math.round(Number(result)).toLocaleString('en-CA')
-        : '—'
-      )
-    : (typeof result === 'object' && result !== null && 'tfsa' in result
-        ? (!isNaN(result.tfsa) 
-            ? Math.round(result.tfsa).toLocaleString('en-CA') 
-            : '—'
-          )
-        : '—'
-      )
-  }
+  ? (!isNaN(result as number)
+      ? Math.round(Number(result)).toLocaleString('en-CA')
+      : '—'
+    )
+  : (typeof result === 'object' && result !== null && 'tfsa' in result
+      ? (!isNaN(result.tfsa)
+          ? Math.round(result.tfsa).toLocaleString('en-CA')
+          : '—'
+        )
+      : '—'
+    )
+}   
 </p>   
 </div>
 
