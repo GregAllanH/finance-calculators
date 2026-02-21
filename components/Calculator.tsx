@@ -394,6 +394,7 @@ const calculate = () => {
       </div>
 
       {/* Result display */}
+      {/* Result display */}
       <div className="mt-10 pt-6 border-t border-gray-200">
         {typeof result === 'string' ? (
           <div className="text-center py-10 bg-gray-50 rounded-xl border border-gray-200 shadow-inner">
@@ -411,31 +412,39 @@ const calculate = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="text-center bg-blue-50 p-6 rounded-xl">
                 <p className="text-lg font-medium text-gray-700 mb-2">Monthly Mortgage Payment</p>
-                <p className="text-4xl font-bold text-blue-600">${result.monthlyPayment || '—'}</p>
+                <p className="text-4xl font-bold text-blue-600">
+                  ${result.monthlyPayment != null ? Math.round(Number(result.monthlyPayment)).toLocaleString('en-CA') : '—'}
+                </p>
               </div>
 
               <div className="text-center bg-green-50 p-6 rounded-xl">
                 <p className="text-lg font-medium text-gray-700 mb-2">Total Monthly Cost (incl. tax & heat)</p>
-                <p className="text-4xl font-bold text-green-600">${result.totalMonthly || '—'}</p>
+                <p className="text-4xl font-bold text-green-600">
+                  ${result.totalMonthly != null ? Math.round(Number(result.totalMonthly)).toLocaleString('en-CA') : '—'}
+                </p>
               </div>
             </div>
 
             <div className="text-center text-gray-600 mt-4 space-y-1">
-              <p>Principal borrowed: ${result.principal || '—'}</p>
-              <p>CMHC premium (if applicable): ${result.cmhcPremium || '—'}</p>
+              <p>Principal borrowed: ${result.principal != null ? Math.round(Number(result.principal)).toLocaleString('en-CA') : '—'}</p>
+              <p>CMHC premium (if applicable): ${result.cmhcPremium != null ? Math.round(Number(result.cmhcPremium)).toLocaleString('en-CA') : '—'}</p>
             </div>
           </div>
         ) : calcData.slug === 'max-house-affordability' ? (
           <div className="space-y-6">
             <div className="text-center bg-purple-50 p-6 rounded-xl">
               <p className="text-lg font-medium text-gray-700 mb-2">Maximum Home Price You Can Afford</p>
-              <p className="text-5xl font-bold text-purple-600">${result.maxPrice || '—'}</p>
+              <p className="text-5xl font-bold text-purple-600">
+                ${result.maxPrice != null ? Math.round(Number(result.maxPrice)).toLocaleString('en-CA') : '—'}
+              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="text-center">
                 <p className="text-lg font-medium text-gray-700">Max Monthly Mortgage Payment</p>
-                <p className="text-3xl font-bold text-purple-600">${result.maxMortgagePayment || '—'}</p>
+                <p className="text-3xl font-bold text-purple-600">
+                  ${result.maxMortgagePayment != null ? Math.round(Number(result.maxMortgagePayment)).toLocaleString('en-CA') : '—'}
+                </p>
               </div>
 
               <div className="text-center">
@@ -449,6 +458,7 @@ const calculate = () => {
             </p>
           </div>
         ) : (
+          // TFSA growth or TFSA vs RRSP
           <div className="max-w-3xl mx-auto space-y-8">
             <div className="text-center bg-gradient-to-br from-blue-50 to-blue-100 p-10 rounded-2xl shadow-lg border border-blue-200 mx-auto max-w-xl transform hover:scale-105 transition-transform duration-300">
               <p className="text-2xl md:text-3xl font-bold text-blue-900 mb-4">
@@ -459,9 +469,9 @@ const calculate = () => {
               <p className="text-5xl md:text-6xl font-black text-blue-700 tracking-tight">
                 ${!isNaN(result) && result !== null && result !== undefined 
                   ? Math.round(Number(result)).toLocaleString('en-CA') 
-                  : (!isNaN(result?.tfsa) && result?.tfsa !== undefined 
+                  : !isNaN(result?.tfsa) && result?.tfsa !== undefined 
                     ? Math.round(Number(result.tfsa)).toLocaleString('en-CA') 
-                    : '—')}
+                    : '—'}
               </p>
               <p className="text-lg md:text-xl text-blue-600 mt-4 font-medium">
                 {calcData.slug === 'tfsa-contribution-growth' 
