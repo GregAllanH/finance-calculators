@@ -335,7 +335,7 @@ const calculate = () => {
                   prefix="$"
                   decimalScale={0}
                   allowNegative={false}
-                  value={values[field.name] || ''}
+                  value={typeof values[field.name] === 'string' ? values[field.name] : ''}
                   onValueChange={(values) => {
                     setValues((prev) => ({
                       ...prev,
