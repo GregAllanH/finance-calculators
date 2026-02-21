@@ -431,36 +431,36 @@ const calculate = () => {
             </div>
           </div>
         ) : calcData.slug === 'mortgage-payment-affordability' ? (
-          <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="text-center bg-blue-50 p-6 rounded-xl">
-                <p className="text-lg font-medium text-gray-700 mb-2">Monthly Mortgage Payment</p>
-                <p className="text-4xl font-bold text-blue-600">
-                  ${typeof result === 'object' && result.monthlyPayment != null 
-                    ? Math.round(Number(result.monthlyPayment)).toLocaleString('en-CA') 
-                    : '—'}
-                </p>
-              </div>
+  <div className="space-y-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="text-center bg-blue-50 p-6 rounded-xl">
+        <p className="text-lg font-medium text-gray-700 mb-2">Monthly Mortgage Payment</p>
+        <p className="text-4xl font-bold text-blue-600">
+          ${typeof result === 'object' && result !== null && 'monthlyPayment' in result && result.monthlyPayment != null
+            ? Math.round(Number(result.monthlyPayment)).toLocaleString('en-CA')
+            : '—'}
+        </p>
+      </div>
 
-              <div className="text-center bg-green-50 p-6 rounded-xl">
-                <p className="text-lg font-medium text-gray-700 mb-2">Total Monthly Cost (incl. tax & heat)</p>
-                <p className="text-4xl font-bold text-green-600">
-                  ${typeof result === 'object' && result.totalMonthly != null 
-                    ? Math.round(Number(result.totalMonthly)).toLocaleString('en-CA') 
-                    : '—'}
-                </p>
-              </div>
-            </div>
+      <div className="text-center bg-green-50 p-6 rounded-xl">
+        <p className="text-lg font-medium text-gray-700 mb-2">Total Monthly Cost (incl. tax & heat)</p>
+        <p className="text-4xl font-bold text-green-600">
+          ${typeof result === 'object' && result !== null && 'totalMonthly' in result && result.totalMonthly != null
+            ? Math.round(Number(result.totalMonthly)).toLocaleString('en-CA')
+            : '—'}
+        </p>
+      </div>
+    </div>
 
-            <div className="text-center text-gray-600 mt-4 space-y-1">
-              <p>Principal borrowed: ${typeof result === 'object' && result.principal != null 
-                ? Math.round(Number(result.principal)).toLocaleString('en-CA') 
-                : '—'}</p>
-              <p>CMHC premium (if applicable): ${typeof result === 'object' && result.cmhcPremium != null 
-                ? Math.round(Number(result.cmhcPremium)).toLocaleString('en-CA') 
-                : '—'}</p>
-            </div>
-          </div>
+    <div className="text-center text-gray-600 mt-4 space-y-1">
+      <p>Principal borrowed: ${typeof result === 'object' && result !== null && 'principal' in result && result.principal != null
+        ? Math.round(Number(result.principal)).toLocaleString('en-CA')
+        : '—'}</p>
+      <p>CMHC premium (if applicable): ${typeof result === 'object' && result !== null && 'cmhcPremium' in result && result.cmhcPremium != null
+        ? Math.round(Number(result.cmhcPremium)).toLocaleString('en-CA')
+        : '—'}</p>
+    </div>
+  </div>
         ) : (
           // TFSA growth or TFSA vs RRSP
           <div className="max-w-3xl mx-auto space-y-8">
