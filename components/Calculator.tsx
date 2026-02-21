@@ -90,7 +90,7 @@ export default function Calculator({
   };
 
 // Calculate function
-const calculate = () => {
+const calculate = (): CalculateResult => {
   const missingFields = fields.filter((f) => !values[f.name] || isNaN(Number(values[f.name])));
   if (missingFields.length > 0) {
     return 'Please fill all fields';
@@ -451,7 +451,9 @@ const calculate = () => {
   <p className="text-5xl md:text-6xl font-black text-blue-700 tracking-tight">
     ${calcData.slug === 'tfsa-contribution-growth' 
       ? (!isNaN(result as number) ? Math.round(Number(result)).toLocaleString('en-CA') : '—')
-      : (!isNaN(result?.tfsa) ? Math.round(Number(result.tfsa)).toLocaleString('en-CA') : '—')}
+      : (typeof result === 'object' && result !== null && 'tfsa' in result && typeof result.tfsa === 'number' && !isNaN(result.tfsa)
+        ? Math.round(result.tfsa).toLocaleString('en-CA')
+        : '—')}
   </p>
   <p className="text-2xl md:text-3xl font-bold text-gray-900">
   {calcData.slug === 'tfsa-contribution-growth'
@@ -459,13 +461,10 @@ const calculate = () => {
       ? Math.round(Number(result)).toLocaleString('en-CA')
       : '—'
     )
-  : (typeof result === 'object' && result !== null && 'tfsa' in result
-      ? (!isNaN(result.tfsa)
-          ? Math.round(result.tfsa).toLocaleString('en-CA')
-          : '—'
-        )
-      : '—'
-    )
+  : (typeof result === 'object' && result !== null && 'tfsa' in result && typeof result.tfsa === 'number' && !isNaN(result.tfsa)
+    ? Math.round(result.tfsa).toLocaleString('en-CA')
+    : '—'
+  )
 }   
 </p>   
 </div>
@@ -475,7 +474,9 @@ const calculate = () => {
       <div className="text-center bg-gradient-to-br from-green-50 to-green-100 p-10 rounded-2xl shadow-lg border border-green-200 mx-auto max-w-xl transform hover:scale-105 transition-transform duration-300">
         <p className="text-2xl md:text-3xl font-bold text-green-900 mb-4">RRSP After-Tax Value</p>
         <p className="text-5xl md:text-6xl font-black text-green-700 tracking-tight">
-          ${!isNaN(result?.rrsp) ? Math.round(Number(result.rrsp)).toLocaleString('en-CA') : '—'}
+          ${(typeof result === 'object' && result !== null && 'rrsp' in result && typeof result.rrsp === 'number' && !isNaN(result.rrsp)
+      ? Math.round(result.rrsp).toLocaleString('en-CA')
+      : '—')}
         </p>
         <p className="text-lg md:text-xl text-green-600 mt-4 font-medium">After withdrawal tax</p>
       </div>
@@ -505,3 +506,9 @@ const calculate = () => {
   </div>
   );
 }
+
+// Add type definitions for calculate result
+type CalculateResult =
+  | string
+  | number
+  | { tfsa: number; rrsp: number };
