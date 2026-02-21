@@ -39,7 +39,7 @@ export default function Calculator({
   calcData,
 }: CalculatorProps) {
   // State
-  const [values, setValues] = useState<Record<string, string | boolean>>({});
+  const [values, setValues] = useState<Record<string, string>>({});
 
   // Auto-repeat logic
   const autoChangeInterval = useRef<NodeJS.Timeout | null>(null);
@@ -89,8 +89,8 @@ export default function Calculator({
     }
   };
 
-  // Calculate function
- const calculate = () => {
+// Calculate function
+const calculate = () => {
   const missingFields = fields.filter((f) => !values[f.name] || isNaN(Number(values[f.name])));
   if (missingFields.length > 0) {
     return 'Please fill all fields';
@@ -263,33 +263,28 @@ export default function Calculator({
               className="w-full sm:w-64 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
               onChange={(e) => {
                 const province = e.target.value;
-                const suggestedRates: { [key: string]: number } = {
-                      'PE': 41.37,
-                      'ON': 43.41,
-                      'QC': 48.7,
-                      'BC': 40.7,
-                      'AB': 38,
-                      'MB': 40.75,
-                      'SK': 40.5,
-                      'NS': 45.25,
-                      'NB': 43,
-                      'NL': 43.3,
-                      'YT': 38,
-                      'NT': 37.05,
-                      'NU': 37.05,
-                    };  
-                const suggestedRate = suggestedRates[province] || '';
+                const suggestedRates = {
+                  'PE': 41.37,
+                  'ON': 43.41,
+                  'QC': 48.7,
+                  'BC': 40.7,
+                  'AB': 38,
+                  'MB': 40.75,
+                  'SK': 40.5,
+                  'NS': 45.25,
+                  'NB': 43,
+                  'NL': 43.3,
+                  'YT': 38,
+                  'NT': 37.05,
+                  'NU': 37.05,
+                };
+                const suggestedRate = suggestedRates[province as keyof typeof suggestedRates] || '';
                 if (suggestedRate) {
                   setValues((prev) => ({
                     ...prev,
                     currentTaxRate: suggestedRate.toString(),
                     futureTaxRate: (suggestedRate * 0.85).toFixed(1).toString(),
-                    _autoFilled: true,
                   }));
-
-                  setTimeout(() => {
-                    setValues((prev) => ({ ...prev, _autoFilled: false }));
-                  }, 4000);
                 }
               }}
             >
@@ -308,8 +303,7 @@ export default function Calculator({
               <option value="NT">Northwest Territories</option>
               <option value="NU">Nunavut</option>
             </select>
-
-            {values._autoFilled && values.currentTaxRate && (
+            {values.currentTaxRate && (
               <div className="relative inline-block group">
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full">
                   Auto-filled ({values.currentTaxRate}% now → ~{values.futureTaxRate}% later)
@@ -345,7 +339,7 @@ export default function Calculator({
                   onValueChange={(values) => {
                     setValues((prev) => ({
                       ...prev,
-                      [field.name]: values.floatValue || '',
+                      [field.name]: values.floatValue?.toString() || '',
                     }));
                   }}
                   className="w-full px-4 py-2 pr-16 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-right"
@@ -510,5 +504,5 @@ export default function Calculator({
       Results update automatically as you type. This is an estimate only.
     </p>
   </div>
-);
+  );
 }
