@@ -440,41 +440,38 @@ const calculate = () => {
     </div>
   </div>
         ) : (
-          // TFSA growth or TFSA vs RRSP
-          <div className="max-w-3xl mx-auto space-y-8">
-            <div className="text-center bg-gradient-to-br from-blue-50 to-blue-100 p-10 rounded-2xl shadow-lg border border-blue-200 mx-auto max-w-xl transform hover:scale-105 transition-transform duration-300">
-              <p className="text-2xl md:text-3xl font-bold text-blue-900 mb-4">
-                {calcData.slug === 'tfsa-contribution-growth' 
-                  ? 'Projected TFSA Value' 
-                  : 'TFSA After-Tax Value'}
-              </p>
-              <p className="text-5xl md:text-6xl font-black text-blue-700 tracking-tight">
-                ${!isNaN(result) && result !== null && result !== undefined 
-                  ? Math.round(Number(result)).toLocaleString('en-CA') 
-                  : !isNaN(result?.tfsa) && result?.tfsa !== undefined 
-                    ? Math.round(Number(result.tfsa)).toLocaleString('en-CA') 
-                    : '—'}
-              </p>
-              <p className="text-lg md:text-xl text-blue-600 mt-4 font-medium">
-                {calcData.slug === 'tfsa-contribution-growth' 
-                  ? 'Tax-free growth estimate' 
-                  : 'Tax-free growth'}
-              </p>
-            </div>
+  <div className="max-w-3xl mx-auto space-y-8">
+    {/* TFSA Card */}
+    <div className="text-center bg-gradient-to-br from-blue-50 to-blue-100 p-10 rounded-2xl shadow-lg border border-blue-200 mx-auto max-w-xl transform hover:scale-105 transition-transform duration-300">
+      <p className="text-2xl md:text-3xl font-bold text-blue-900 mb-4">
+        {calcData.slug === 'tfsa-contribution-growth' 
+          ? 'Projected TFSA Value' 
+          : 'TFSA After-Tax Value'}
+      </p>
+      <p className="text-5xl md:text-6xl font-black text-blue-700 tracking-tight">
+        ${calcData.slug === 'tfsa-contribution-growth' 
+          ? (!isNaN(result) ? Math.round(Number(result)).toLocaleString('en-CA') : '—')
+          : (!isNaN(result?.tfsa) ? Math.round(Number(result.tfsa)).toLocaleString('en-CA') : '—')}
+      </p>
+      <p className="text-lg md:text-xl text-blue-600 mt-4 font-medium">
+        {calcData.slug === 'tfsa-contribution-growth' 
+          ? 'Tax-free growth estimate' 
+          : 'Tax-free growth'}
+      </p>
+    </div>
 
-            {calcData.slug === 'tfsa-vs-rrsp' && (
-              <div className="text-center bg-gradient-to-br from-green-50 to-green-100 p-10 rounded-2xl shadow-lg border border-green-200 mx-auto max-w-xl transform hover:scale-105 transition-transform duration-300">
-                <p className="text-2xl md:text-3xl font-bold text-green-900 mb-4">RRSP After-Tax Value</p>
-                <p className="text-5xl md:text-6xl font-black text-green-700 tracking-tight">
-                  ${!isNaN(result?.rrsp) && result?.rrsp !== undefined 
-                    ? Math.round(Number(result.rrsp)).toLocaleString('en-CA') 
-                    : '—'}
-                </p>
-                <p className="text-lg md:text-xl text-green-600 mt-4 font-medium">After withdrawal tax</p>
-              </div>
-            )}
-          </div>
-        )}
+    {/* RRSP Card - only on comparator page */}
+    {calcData.slug === 'tfsa-vs-rrsp' && (
+      <div className="text-center bg-gradient-to-br from-green-50 to-green-100 p-10 rounded-2xl shadow-lg border border-green-200 mx-auto max-w-xl transform hover:scale-105 transition-transform duration-300">
+        <p className="text-2xl md:text-3xl font-bold text-green-900 mb-4">RRSP After-Tax Value</p>
+        <p className="text-5xl md:text-6xl font-black text-green-700 tracking-tight">
+          ${!isNaN(result?.rrsp) ? Math.round(Number(result.rrsp)).toLocaleString('en-CA') : '—'}
+        </p>
+        <p className="text-lg md:text-xl text-green-600 mt-4 font-medium">After withdrawal tax</p>
+      </div>
+    )}
+  </div>
+)}
       </div>
 
       <div className="mt-6 text-center text-sm text-gray-600 bg-gray-50 py-3 rounded-lg border border-gray-200">
