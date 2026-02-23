@@ -421,7 +421,7 @@ export default function Calculator({
 
               <div className="text-center">
                 <p className="text-lg font-medium text-gray-700">GDS / TDS Ratios</p>
-                <p className="text-xl">GDS: {result.gdsRatio || '—'} | TDS: {result.tdsRatio || '—'}</p>
+                <p className="text-xl">GDS: {(typeof result === 'object' && 'gdsRatio' in result ? result.gdsRatio : '') || '—'} | TDS: {(typeof result === 'object' && 'tdsRatio' in result ? result.tdsRatio : '') || '—'}</p>
               </div>
             </div>
 
@@ -449,11 +449,11 @@ export default function Calculator({
               </p>
             </div>
 
-            {calcData.slug === 'tfsa-vs-rrsp' && (
+            {calcData.slug === 'tfsa-vs-rrsp' && typeof result === 'object' && result !== null && 'rrsp' in result && (
               <div className="text-center bg-gradient-to-br from-green-50 to-green-100 p-10 rounded-2xl shadow-lg border border-green-200 mx-auto max-w-xl transform hover:scale-105 transition-transform duration-300">
                 <p className="text-2xl md:text-3xl font-bold text-green-900 mb-4">RRSP After-Tax Value</p>
                 <p className="text-5xl md:text-6xl font-black text-green-700 tracking-tight">
-                  ${!isNaN(result?.rrsp) ? Math.round(Number(result.rrsp)).toLocaleString('en-CA') : '—'}
+                  ${!isNaN(result.rrsp) ? Math.round(Number(result.rrsp)).toLocaleString('en-CA') : '—'}
                 </p>
                 <p className="text-lg md:text-xl text-green-600 mt-4 font-medium">After withdrawal tax</p>
               </div>
