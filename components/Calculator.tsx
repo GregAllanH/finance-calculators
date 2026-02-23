@@ -37,7 +37,6 @@ export default function Calculator({
 }: CalculatorProps) {
   const [values, setValues] = useState<Record<string, string>>({});
 
-  // Auto-repeat logic
   const autoChangeInterval = useRef<NodeJS.Timeout | null>(null);
 
   const startAutoChange = (fieldName: string, direction: number) => {
@@ -99,7 +98,6 @@ export default function Calculator({
         return 'Return cannot be 0%';
       }
 
-      // TFSA single growth
       if (calcData.formula) {
         const resultValue = evaluate(calcData.formula, scope);
         if (typeof resultValue === 'number' && !isNaN(resultValue) && isFinite(resultValue)) {
@@ -108,7 +106,6 @@ export default function Calculator({
         return 'Invalid result';
       }
 
-      // TFSA vs RRSP comparator
       if (calcData.formula_tfsa && calcData.formula_rrsp) {
         const tfsaRaw = evaluate(calcData.formula_tfsa, scope);
         const rrspRaw = evaluate(calcData.formula_rrsp, scope);
@@ -119,7 +116,6 @@ export default function Calculator({
         };
       }
 
-      // Mortgage
       if (calcData.slug?.toLowerCase().includes('mortgage-payment-affordability')) {
         const price = Number(scope.purchasePrice) || 0;
         const downPct = (Number(scope.downPaymentPercent) || 0) / 100;
@@ -180,7 +176,6 @@ export default function Calculator({
         };
       }
 
-      // Max house affordability
       if (calcData.slug?.toLowerCase().includes('max-house-affordability')) {
         const incomeYearly = Number(scope.grossIncomeYearly) || 0;
         const debtMonthly = Number(scope.monthlyDebtPayments) || 0;
@@ -232,9 +227,7 @@ export default function Calculator({
 
   return (
     <div className="bg-white rounded-xl shadow-lg p-8">
-      {/* Form inputs */}
       <div className="space-y-6">
-        {/* Province dropdown */}
         {calcData?.slug !== 'mortgage-payment-affordability' &&
          calcData?.slug !== 'max-house-affordability' && (
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 relative">
@@ -289,7 +282,6 @@ export default function Calculator({
           </div>
         )}
 
-        {/* Dynamic fields */}
         {fields.map((field) => (
           <div key={field.name} className="flex flex-col sm:flex-row sm:items-center gap-4">
             <label htmlFor={field.name} className="flex-1 font-medium text-gray-700">
@@ -363,7 +355,6 @@ export default function Calculator({
         ))}
       </div>
 
-      {/* Result display */}
       <div className="mt-10 pt-6 border-t border-gray-200">
         {typeof result === 'string' ? (
           <div className="text-center py-10 bg-gray-50 rounded-xl border border-gray-200 shadow-inner">
@@ -470,21 +461,7 @@ export default function Calculator({
           </div>
         )}
       </div>
-          {/* RRSP Deadline Countdown */}
-          <div className="mt-6 text-center bg-gray-50 py-4 rounded-xl border border-gray-200">
-            <p className="text-sm text-gray-700">
-              <strong>2025 RRSP contribution deadline</strong> (deduct on 2025 taxes):{' '}
-              <span className="font-semibold text-red-600">March 2, 2026</span>
-            </p>
-            <p className="mt-1 text-red-700 font-bold text-base">
-              Days remaining: {' '}
-              <span className="font-black">
-                {Math.max(0, Math.ceil(
-                  (new Date('2026-03-03').getTime() - Date.now()) / (1000 * 60 * 60 * 24)
-                ))}
-              </span>
-            </p>
-          </div>
+
       <p className="mt-8 text-sm text-gray-500 text-center">
         Results update automatically as you type. This is an estimate only.
       </p>
