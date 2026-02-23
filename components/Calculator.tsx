@@ -6,7 +6,6 @@ import { evaluate } from 'mathjs';
 import { NumericFormat } from 'react-number-format';
 import { useRef } from 'react';
 
-// Define prop types (fixes Vercel TypeScript error)
 interface CalculatorProps {
   title: string;
   fields: Array<{
@@ -21,11 +20,9 @@ interface CalculatorProps {
   resultUnit: string;
   calcData: {
     slug: string;
-    formula?: string;          // ← add this
-    formula_tfsa?: string;     // ← add this
-    formula_rrsp?: string;     // ← add this
-    
-    // Add any other fields your data source might have
+    formula?: string;
+    formula_tfsa?: string;
+    formula_rrsp?: string;
   };
 }
 
@@ -38,7 +35,6 @@ export default function Calculator({
   resultUnit,
   calcData,
 }: CalculatorProps) {
-  // State
   const [values, setValues] = useState<Record<string, string>>({});
 
   // Auto-repeat logic
@@ -77,10 +73,8 @@ export default function Calculator({
     }
   };
 
-  // Handle input changes
   const handleChange = (e: ChangeEvent<HTMLInputElement>, fieldName: string) => {
     const value = e.target.value;
-    // Allow only numbers or empty
     if (value === '' || !isNaN(Number(value))) {
       setValues((prev) => ({
         ...prev,
@@ -89,161 +83,150 @@ export default function Calculator({
     }
   };
 
-// Calculate function
-const calculate = (): CalculateResult => {
-  const missingFields = fields.filter((f) => !values[f.name] || isNaN(Number(values[f.name])));
-  if (missingFields.length > 0) {
-    return 'Please fill all fields';
-  }
-
-  try {
-    const scope: Record<string, number> = {};
-    fields.forEach((field) => {
-      scope[field.name] = Number(values[field.name] || 0);
-    });
-
-    if (scope.annualReturn === 0) {
-      return 'Return cannot be 0%';
+  const calculate = () => {
+    const missingFields = fields.filter((f) => !values[f.name] || isNaN(Number(values[f.name])));
+    if (missingFields.length > 0) {
+      return 'Please fill all fields';
     }
 
-    // Single formula mode (TFSA growth)
-    if (calcData.formula) {
-      const resultValue = evaluate(calcData.formula, scope);
-      if (typeof resultValue === 'number' && !isNaN(resultValue) && isFinite(resultValue)) {
-        return resultValue; // raw number
+    try {
+      const scope: Record<string, number> = {};
+      fields.forEach((field) => {
+        scope[field.name] = Number(values[field.name] || 0);
+      });
+
+      if (scope.annualReturn === 0) {
+        return 'Return cannot be 0%';
       }
-      return 'Invalid result';
-    }
 
-    // Comparator mode (TFSA vs RRSP)
-    if (calcData.formula_tfsa && calcData.formula_rrsp) {
-      const tfsaRaw = evaluate(calcData.formula_tfsa, scope);
-      const rrspRaw = evaluate(calcData.formula_rrsp, scope);
+      // TFSA single growth
+      if (calcData.formula) {
+        const resultValue = evaluate(calcData.formula, scope);
+        if (typeof resultValue === 'number' && !isNaN(resultValue) && isFinite(resultValue)) {
+          return resultValue;
+        }
+        return 'Invalid result';
+      }
 
-      return {
-        tfsa: typeof tfsaRaw === 'number' && !isNaN(tfsaRaw) && isFinite(tfsaRaw)
-          ? Math.round(tfsaRaw)
-          : NaN,
-        rrsp: typeof rrspRaw === 'number' && !isNaN(rrspRaw) && isFinite(rrspRaw)
-          ? Math.round(rrspRaw)
-          : NaN,
-      };
-    }
+      // TFSA vs RRSP comparator
+      if (calcData.formula_tfsa && calcData.formula_rrsp) {
+        const tfsaRaw = evaluate(calcData.formula_tfsa, scope);
+        const rrspRaw = evaluate(calcData.formula_rrsp, scope);
 
-    // Mortgage mode – flexible slug match
-    if (calcData.slug?.toLowerCase().includes('mortgage-payment-affordability')) {
-      console.log('Matched mortgage mode');
+        return {
+          tfsa: typeof tfsaRaw === 'number' && !isNaN(tfsaRaw) && isFinite(tfsaRaw) ? Math.round(tfsaRaw) : NaN,
+          rrsp: typeof rrspRaw === 'number' && !isNaN(rrspRaw) && isFinite(rrspRaw) ? Math.round(rrspRaw) : NaN,
+        };
+      }
 
-      const price = Number(scope.purchasePrice) || 0;
-      const downPct = (Number(scope.downPaymentPercent) || 0) / 100;
-      const interestRate = (Number(scope.interestRate) || 0) / 100;
-      const amortizationYears = Number(scope.amortizationYears) || 0;
-      const propertyTaxYearly = Number(scope.propertyTaxYearly) || 0;
-      const heatingCostsMonthly = Number(scope.heatingCostsMonthly) || 0;
+      // Mortgage
+      if (calcData.slug?.toLowerCase().includes('mortgage-payment-affordability')) {
+        const price = Number(scope.purchasePrice) || 0;
+        const downPct = (Number(scope.downPaymentPercent) || 0) / 100;
+        const interestRate = (Number(scope.interestRate) || 0) / 100;
+        const amortizationYears = Number(scope.amortizationYears) || 0;
+        const propertyTaxYearly = Number(scope.propertyTaxYearly) || 0;
+        const heatingCostsMonthly = Number(scope.heatingCostsMonthly) || 0;
 
-      if (price <= 0) return 'Purchase price must be greater than $0';
-      if (downPct < 0 || downPct > 1) return 'Down payment percent must be between 0 and 100';
-      if (interestRate <= 0) return 'Interest rate must be greater than 0%';
-      if (amortizationYears <= 0 || amortizationYears > 35) return 'Amortization years must be between 1 and 35';
+        if (price <= 0) return 'Purchase price must be greater than $0';
+        if (downPct < 0 || downPct > 1) return 'Down payment percent must be between 0 and 100';
+        if (interestRate <= 0) return 'Interest rate must be greater than 0%';
+        if (amortizationYears <= 0 || amortizationYears > 35) return 'Amortization years must be between 1 and 35';
 
-      const downAmount = price * downPct;
-      const principal = price - downAmount;
+        const downAmount = price * downPct;
+        const principal = price - downAmount;
 
-      if (principal <= 0) return 'Down payment too high – principal must be positive';
+        if (principal <= 0) return 'Down payment too high – principal must be positive';
 
-      let cmhcRate = 0;
-      if (downPct < 0.05) cmhcRate = 0.04;
-      else if (downPct < 0.1) cmhcRate = 0.031;
-      else if (downPct < 0.15) cmhcRate = 0.0175;
-      else if (downPct < 0.2) cmhcRate = 0.01;
+        let cmhcRate = 0;
+        if (downPct < 0.05) cmhcRate = 0.04;
+        else if (downPct < 0.1) cmhcRate = 0.031;
+        else if (downPct < 0.15) cmhcRate = 0.0175;
+        else if (downPct < 0.2) cmhcRate = 0.01;
 
-      const cmhcPremium = principal * cmhcRate;
-      const totalPrincipal = principal + cmhcPremium;
+        const cmhcPremium = principal * cmhcRate;
+        const totalPrincipal = principal + cmhcPremium;
 
-      const monthlyRate = interestRate / 12;
-      const periods = amortizationYears * 12;
+        const monthlyRate = interestRate / 12;
+        const periods = amortizationYears * 12;
 
-      if (periods <= 0 || monthlyRate <= 0) return 'Invalid amortization or interest rate';
+        let monthlyPayment = 0;
+        try {
+          monthlyPayment = evaluate(
+            'totalPrincipal * (monthlyRate * pow(1 + monthlyRate, periods)) / (pow(1 + monthlyRate, periods) - 1)',
+            { totalPrincipal, monthlyRate, periods }
+          );
+        } catch (err) {
+          console.error('Mortgage formula error:', err);
+          return 'Calculation error – check interest rate or amortization';
+        }
 
-      let monthlyPayment = 0;
-      try {
-        monthlyPayment = evaluate(
-          'totalPrincipal * (monthlyRate * pow(1 + monthlyRate, periods)) / (pow(1 + monthlyRate, periods) - 1)',
-          { totalPrincipal, monthlyRate, periods }
+        if (isNaN(monthlyPayment) || !isFinite(monthlyPayment)) {
+          return 'Invalid mortgage calculation – check inputs';
+        }
+
+        const monthlyTax = propertyTaxYearly / 12;
+        const totalMonthly = monthlyPayment + monthlyTax + heatingCostsMonthly;
+
+        if (isNaN(totalMonthly) || !isFinite(totalMonthly)) {
+          return 'Total cost overflow – property tax or other values too high';
+        }
+
+        return {
+          monthlyPayment: Math.round(monthlyPayment),
+          totalMonthly: Math.round(totalMonthly),
+          cmhcPremium: Math.round(cmhcPremium),
+          principal: Math.round(principal)
+        };
+      }
+
+      // Max house affordability
+      if (calcData.slug?.toLowerCase().includes('max-house-affordability')) {
+        const incomeYearly = Number(scope.grossIncomeYearly) || 0;
+        const debtMonthly = Number(scope.monthlyDebtPayments) || 0;
+        const downAmount = Number(scope.downPaymentAmount) || 0;
+        const interestRatePercent = Number(scope.interestRate) || 0;
+        const amortizationYears = Number(scope.amortizationYears) || 0;
+        const taxYearly = Number(scope.propertyTaxYearly) || 0;
+        const heatMonthly = Number(scope.heatingCostsMonthly) || 0;
+
+        if (incomeYearly <= 0) return 'Income must be positive';
+        if (interestRatePercent <= 0) return 'Interest rate must be positive';
+        if (amortizationYears <= 0) return 'Amortization years must be positive';
+
+        const annualRate = interestRatePercent / 100;
+        const monthlyRate = annualRate / 12;
+        const periods = amortizationYears * 12;
+
+        const monthlyIncome = incomeYearly / 12;
+        const maxHousingMonthly = monthlyIncome * 0.32;
+        const maxTotalDebtMonthly = monthlyIncome * 0.44;
+
+        const maxMortgagePayment = Math.min(
+          maxHousingMonthly - (taxYearly / 12) - heatMonthly,
+          maxTotalDebtMonthly - debtMonthly
         );
-      } catch (err) {
-        console.error('Mortgage formula error:', err);
-        return 'Calculation error – check interest rate or amortization';
+
+        if (maxMortgagePayment <= 0) return 'Income too low for mortgage with these costs';
+
+        const powerTerm = Math.pow(1 + monthlyRate, periods);
+        const principal = maxMortgagePayment * (powerTerm - 1) / (monthlyRate * powerTerm);
+        const maxPrice = principal + downAmount;
+
+        return {
+          maxPrice: Math.round(maxPrice),
+          maxMortgagePayment: Math.round(maxMortgagePayment),
+          gdsRatio: (maxHousingMonthly / monthlyIncome * 100).toFixed(1) + '%',
+          tdsRatio: (maxTotalDebtMonthly / monthlyIncome * 100).toFixed(1) + '%'
+        };
       }
 
-      if (isNaN(monthlyPayment) || !isFinite(monthlyPayment)) {
-        return 'Invalid mortgage calculation – check inputs';
-      }
-
-      const monthlyTax = propertyTaxYearly / 12;
-      const totalMonthly = monthlyPayment + monthlyTax + heatingCostsMonthly;
-
-      if (isNaN(totalMonthly) || !isFinite(totalMonthly)) {
-        return 'Total cost overflow – property tax or other values too high';
-      }
-
-      return {
-        monthlyPayment: Math.round(monthlyPayment),
-        totalMonthly: Math.round(totalMonthly),
-        cmhcPremium: Math.round(cmhcPremium),
-        principal: Math.round(principal)
-      };
+      return 'No formula defined for this calculator';
+    } catch (error) {
+      console.error('Calculation error:', error);
+      return 'Calculation error';
     }
-
-    // Max house affordability mode – flexible slug match
-    if (calcData.slug?.toLowerCase().includes('max-house-affordability')) {
-      console.log('Matched affordability mode');
-
-      const incomeYearly = Number(scope.grossIncomeYearly) || 0;
-      const debtMonthly = Number(scope.monthlyDebtPayments) || 0;
-      const downAmount = Number(scope.downPaymentAmount) || 0;
-      const interestRatePercent = Number(scope.interestRate) || 0;
-      const amortizationYears = Number(scope.amortizationYears) || 0;
-      const taxYearly = Number(scope.propertyTaxYearly) || 0;
-      const heatMonthly = Number(scope.heatingCostsMonthly) || 0;
-
-      if (incomeYearly <= 0) return 'Income must be positive';
-      if (interestRatePercent <= 0) return 'Interest rate must be positive';
-      if (amortizationYears <= 0) return 'Amortization years must be positive';
-
-      const annualRate = interestRatePercent / 100;
-      const monthlyRate = annualRate / 12;
-      const periods = amortizationYears * 12;
-
-      const monthlyIncome = incomeYearly / 12;
-      const maxHousingMonthly = monthlyIncome * 0.32;
-      const maxTotalDebtMonthly = monthlyIncome * 0.44;
-
-      const maxMortgagePayment = Math.min(
-        maxHousingMonthly - (taxYearly / 12) - heatMonthly,
-        maxTotalDebtMonthly - debtMonthly
-      );
-
-      if (maxMortgagePayment <= 0) return 'Income too low for mortgage with these costs';
-
-      const powerTerm = Math.pow(1 + monthlyRate, periods);
-      const principal = maxMortgagePayment * (powerTerm - 1) / (monthlyRate * powerTerm);
-      const maxPrice = principal + downAmount;
-
-      return {
-        maxPrice: Math.round(maxPrice),
-        maxMortgagePayment: Math.round(maxMortgagePayment),
-        gdsRatio: (maxHousingMonthly / monthlyIncome * 100).toFixed(1) + '%',
-        tdsRatio: (maxTotalDebtMonthly / monthlyIncome * 100).toFixed(1) + '%'
-      };
-    }
-
-    return 'No formula defined for this calculator';
-  } catch (error) {
-    console.error('Calculation error:', error);
-    return 'Calculation error';
-  }
-};
+  };
 
   const result = calculate();
 
@@ -303,19 +286,6 @@ const calculate = (): CalculateResult => {
               <option value="NT">Northwest Territories</option>
               <option value="NU">Nunavut</option>
             </select>
-            {values.currentTaxRate && (
-              <div className="relative inline-block group">
-                <span className="absolute right-3 top-1/2 -translate-y-1/2 bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full">
-                  Auto-filled ({values.currentTaxRate}% now → ~{values.futureTaxRate}% later)
-                </span>
-
-                <span className="absolute left-0 top-full mt-2 hidden group-hover:block w-80 p-3 bg-gray-800 text-white text-sm rounded-lg shadow-lg z-10">
-                  <strong>Combined marginal rate</strong> = federal + provincial tax rate on your next dollar earned.  
-                  Used for RRSP deduction/refund and future withdrawal tax.  
-                  Rates are approximate mid-income estimates for 2026 — actual rate depends on your total income and bracket. Verify with CRA.
-                </span>
-              </div>
-            )}
           </div>
         )}
 
@@ -394,7 +364,6 @@ const calculate = (): CalculateResult => {
       </div>
 
       {/* Result display */}
-      {/* Result display */}
       <div className="mt-10 pt-6 border-t border-gray-200">
         {typeof result === 'string' ? (
           <div className="text-center py-10 bg-gray-50 rounded-xl border border-gray-200 shadow-inner">
@@ -407,108 +376,118 @@ const calculate = (): CalculateResult => {
               Enter your values to see projected results.
             </p>
           </div>
-        
         ) : calcData.slug === 'mortgage-payment-affordability' ? (
-  <div className="space-y-6">
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div className="text-center bg-blue-50 p-6 rounded-xl">
-        <p className="text-lg font-medium text-gray-700 mb-2">Monthly Mortgage Payment</p>
-        <p className="text-4xl font-bold text-blue-600">
-          ${typeof result === 'object' && result !== null && 'monthlyPayment' in result && result.monthlyPayment != null
-            ? Math.round(Number(result.monthlyPayment)).toLocaleString('en-CA')
-            : '—'}
-        </p>
-      </div>
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="text-center bg-blue-50 p-6 rounded-xl">
+                <p className="text-lg font-medium text-gray-700 mb-2">Monthly Mortgage Payment</p>
+                <p className="text-4xl font-bold text-blue-600">
+                  ${'monthlyPayment' in result && result.monthlyPayment != null 
+                    ? Math.round(Number(result.monthlyPayment)).toLocaleString('en-CA') 
+                    : '—'}
+                </p>
+              </div>
 
-      <div className="text-center bg-green-50 p-6 rounded-xl">
-        <p className="text-lg font-medium text-gray-700 mb-2">Total Monthly Cost (incl. tax & heat)</p>
-        <p className="text-4xl font-bold text-green-600">
-          ${typeof result === 'object' && result !== null && 'totalMonthly' in result && result.totalMonthly != null
-            ? Math.round(Number(result.totalMonthly)).toLocaleString('en-CA')
-            : '—'}
-        </p>
-      </div>
-    </div>
+              <div className="text-center bg-green-50 p-6 rounded-xl">
+                <p className="text-lg font-medium text-gray-700 mb-2">Total Monthly Cost (incl. tax & heat)</p>
+                <p className="text-4xl font-bold text-green-600">
+                  ${'totalMonthly' in result && result.totalMonthly != null 
+                    ? Math.round(Number(result.totalMonthly)).toLocaleString('en-CA') 
+                    : '—'}
+                </p>
+              </div>
+            </div>
 
-    <div className="text-center text-gray-600 mt-4 space-y-1">
-      <p>Principal borrowed: ${typeof result === 'object' && result !== null && 'principal' in result && result.principal != null
-        ? Math.round(Number(result.principal)).toLocaleString('en-CA')
-        : '—'}</p>
-      <p>CMHC premium (if applicable): ${typeof result === 'object' && result !== null && 'cmhcPremium' in result && result.cmhcPremium != null
-        ? Math.round(Number(result.cmhcPremium)).toLocaleString('en-CA')
-        : '—'}</p>
-    </div>
-  </div>
+            <div className="text-center text-gray-600 mt-4 space-y-1">
+              <p>Principal borrowed: ${'principal' in result && result.principal != null 
+                ? Math.round(Number(result.principal)).toLocaleString('en-CA') 
+                : '—'}</p>
+              <p>CMHC premium (if applicable): ${'cmhcPremium' in result && result.cmhcPremium != null 
+                ? Math.round(Number(result.cmhcPremium)).toLocaleString('en-CA') 
+                : '—'}</p>
+            </div>
+          </div>
+        ) : calcData.slug === 'max-house-affordability' ? (
+          <div className="space-y-6">
+            <div className="text-center bg-purple-50 p-6 rounded-xl">
+              <p className="text-lg font-medium text-gray-700 mb-2">Maximum Home Price You Can Afford</p>
+              <p className="text-5xl font-bold text-purple-600">
+                ${'maxPrice' in result && result.maxPrice != null 
+                  ? Math.round(Number(result.maxPrice)).toLocaleString('en-CA') 
+                  : '—'}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="text-center">
+                <p className="text-lg font-medium text-gray-700">Max Monthly Mortgage Payment</p>
+                <p className="text-3xl font-bold text-purple-600">
+                  ${'maxMortgagePayment' in result && result.maxMortgagePayment != null 
+                    ? Math.round(Number(result.maxMortgagePayment)).toLocaleString('en-CA') 
+                    : '—'}
+                </p>
+              </div>
+
+              <div className="text-center">
+                <p className="text-lg font-medium text-gray-700">GDS / TDS Ratios</p>
+                <p className="text-xl">GDS: {result.gdsRatio || '—'} | TDS: {result.tdsRatio || '—'}</p>
+              </div>
+            </div>
+
+            <p className="text-center text-gray-600 mt-4">
+              Based on GDS ≤32% and TDS ≤44%. CMHC insurance not included in affordability.
+            </p>
+          </div>
         ) : (
-  <div className="max-w-3xl mx-auto space-y-8">
-    {/* TFSA Card */}
-    <div className="text-center bg-gradient-to-br from-blue-50 to-blue-100 p-10 rounded-2xl shadow-lg border border-blue-200 mx-auto max-w-xl transform hover:scale-105 transition-transform duration-300">
-  <p className="text-2xl md:text-3xl font-bold text-blue-900 mb-4">
-    {calcData.slug === 'tfsa-contribution-growth' 
-      ? 'Projected TFSA Value' 
-      : 'TFSA After-Tax Value'}
-  </p>
-  <p className="text-5xl md:text-6xl font-black text-blue-700 tracking-tight">
-    ${calcData.slug === 'tfsa-contribution-growth' 
-      ? (!isNaN(result as number) ? Math.round(Number(result)).toLocaleString('en-CA') : '—')
-      : (typeof result === 'object' && result !== null && 'tfsa' in result && typeof result.tfsa === 'number' && !isNaN(result.tfsa)
-        ? Math.round(result.tfsa).toLocaleString('en-CA')
-        : '—')}
-  </p>
-  <p className="text-2xl md:text-3xl font-bold text-gray-900">
-  {calcData.slug === 'tfsa-contribution-growth'
-  ? (!isNaN(result as number)
-      ? Math.round(Number(result)).toLocaleString('en-CA')
-      : '—'
-    )
-  : (typeof result === 'object' && result !== null && 'tfsa' in result && typeof result.tfsa === 'number' && !isNaN(result.tfsa)
-    ? Math.round(result.tfsa).toLocaleString('en-CA')
-    : '—'
-  )
-}   
-</p>   
-</div>
+          <div className="max-w-3xl mx-auto space-y-8">
+            <div className="text-center bg-gradient-to-br from-blue-50 to-blue-100 p-10 rounded-2xl shadow-lg border border-blue-200 mx-auto max-w-xl transform hover:scale-105 transition-transform duration-300">
+              <p className="text-2xl md:text-3xl font-bold text-blue-900 mb-4">
+                {calcData.slug === 'tfsa-contribution-growth' 
+                  ? 'Projected TFSA Value' 
+                  : 'TFSA After-Tax Value'}
+              </p>
+              <p className="text-5xl md:text-6xl font-black text-blue-700 tracking-tight">
+                ${calcData.slug === 'tfsa-contribution-growth' 
+                  ? (!isNaN(result as number) ? Math.round(Number(result)).toLocaleString('en-CA') : '—')
+                  : (!isNaN(result?.tfsa) ? Math.round(Number(result.tfsa)).toLocaleString('en-CA') : '—')}
+              </p>
+              <p className="text-lg md:text-xl text-blue-600 mt-4 font-medium">
+                {calcData.slug === 'tfsa-contribution-growth' 
+                  ? 'Tax-free growth estimate' 
+                  : 'Tax-free growth'}
+              </p>
+            </div>
 
-    {/* RRSP Card - only on comparator page */}
-    {calcData.slug === 'tfsa-vs-rrsp' && (
-      <div className="text-center bg-gradient-to-br from-green-50 to-green-100 p-10 rounded-2xl shadow-lg border border-green-200 mx-auto max-w-xl transform hover:scale-105 transition-transform duration-300">
-        <p className="text-2xl md:text-3xl font-bold text-green-900 mb-4">RRSP After-Tax Value</p>
-        <p className="text-5xl md:text-6xl font-black text-green-700 tracking-tight">
-          ${(typeof result === 'object' && result !== null && 'rrsp' in result && typeof result.rrsp === 'number' && !isNaN(result.rrsp)
-      ? Math.round(result.rrsp).toLocaleString('en-CA')
-      : '—')}
-        </p>
-        <p className="text-lg md:text-xl text-green-600 mt-4 font-medium">After withdrawal tax</p>
+            {calcData.slug === 'tfsa-vs-rrsp' && (
+              <div className="text-center bg-gradient-to-br from-green-50 to-green-100 p-10 rounded-2xl shadow-lg border border-green-200 mx-auto max-w-xl transform hover:scale-105 transition-transform duration-300">
+                <p className="text-2xl md:text-3xl font-bold text-green-900 mb-4">RRSP After-Tax Value</p>
+                <p className="text-5xl md:text-6xl font-black text-green-700 tracking-tight">
+                  ${!isNaN(result?.rrsp) ? Math.round(Number(result.rrsp)).toLocaleString('en-CA') : '—'}
+                </p>
+                <p className="text-lg md:text-xl text-green-600 mt-4 font-medium">After withdrawal tax</p>
+              </div>
+            )}
+          </div>
+        )}
       </div>
-    )}
-  </div>
-)}
-      </div>
-
-      <div className="mt-6 text-center text-sm text-gray-600 bg-gray-50 py-3 rounded-lg border border-gray-200">
-      <p>
-        <strong>2025 RRSP contribution deadline</strong> (deduct on 2025 taxes):{' '}
-        <span className="font-medium text-red-600">March 2, 2026</span>
-      </p>
-      <p className="mt-1 font-medium">
-        Days remaining: {' '}
-        <span className="text-red-700 font-bold">
-          {Math.max(0, Math.ceil(
-            (new Date('2026-03-03T00:00:00-04:00').getTime() - Date.now()) / (1000 * 60 * 60 * 24)
-          ))}
-        </span>
+          {/* RRSP Deadline Countdown */}
+          <div className="mt-6 text-center bg-gray-50 py-4 rounded-xl border border-gray-200">
+            <p className="text-sm text-gray-700">
+              <strong>2025 RRSP contribution deadline</strong> (deduct on 2025 taxes):{' '}
+              <span className="font-semibold text-red-600">March 2, 2026</span>
+            </p>
+            <p className="mt-1 text-red-700 font-bold text-base">
+              Days remaining: {' '}
+              <span className="font-black">
+                {Math.max(0, Math.ceil(
+                  (new Date('2026-03-03').getTime() - Date.now()) / (1000 * 60 * 60 * 24)
+                ))}
+              </span>
+            </p>
+          </div>
+      <p className="mt-8 text-sm text-gray-500 text-center">
+        Results update automatically as you type. This is an estimate only.
       </p>
     </div>
-
-    <p className="mt-4 text-sm text-gray-500 text-center">
-      Results update automatically as you type. This is an estimate only.
-    </p>
-  </div>
   );
 }
-
-// Add type definitions for calculate result
-type CalculateResult =
-  | string
-  | number
-  | { tfsa: number; rrsp: number };
