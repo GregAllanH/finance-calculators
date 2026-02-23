@@ -461,7 +461,21 @@ export default function Calculator({
           </div>
         )}
       </div>
-
+        {/* RRSP Deadline Countdown */}
+        <div className="mt-6 text-center bg-gray-50 py-4 rounded-xl border border-gray-200">
+          <p className="text-sm text-gray-700">
+            <strong>2025 RRSP contribution deadline</strong> (deduct on 2025 taxes):{' '}
+            <span className="font-semibold text-red-600">March 2, 2026</span>
+          </p>
+          <p className="mt-1 text-red-700 font-bold text-base">
+            Days remaining: {' '}
+            <span className="font-black">
+              {Math.max(0, Math.ceil(
+                (new Date('2026-03-03').getTime() - Date.now()) / (1000 * 60 * 60 * 24)
+              ))}
+            </span>
+          </p>
+        </div>  
       <p className="mt-8 text-sm text-gray-500 text-center">
         Results update automatically as you type. This is an estimate only.
       </p>
