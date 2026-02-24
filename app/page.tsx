@@ -5,9 +5,16 @@ import Link from 'next/link';
 const STATIC_CALCULATORS = [
   {
     slug: 'income-tax',
-    href: '/income-tax',
+    href: '/calculators/income-tax',
     title: 'Canadian Income Tax Calculator',
     description: 'Calculate federal & provincial tax, CPP, EI, and take-home pay for 2024 & 2025.',
+    badge: 'New',
+  },
+  {
+    slug: 'cpp-benefits',
+    href: '/calculators/cpp-benefits',
+    title: 'CPP Benefits Estimator',
+    description: 'Estimate your monthly CPP payments at 60, 65, or 70. Find your breakeven age and maximize your lifetime benefit.',
     badge: 'New',
   },
 ];
@@ -25,7 +32,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-          {/* Static calculators (income tax etc.) */}
+          {/* Static calculators (income tax, cpp etc.) */}
           {STATIC_CALCULATORS.map((calc) => (
             <Link
               key={calc.slug}
