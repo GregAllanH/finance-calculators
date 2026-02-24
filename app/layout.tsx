@@ -1,3 +1,4 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -13,16 +14,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Canadian Finance Tools",
-  description: "Canadian Finance Tools - TFSA, RRSP, Mortgage & Affordability Calculators",
-icons: {
-  icon: [
-    { url: "/favicon.ico" },
-    { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-    { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-  ],
-  apple: "/apple-touch-icon.png",
-},
+  title: "Canadian Calculators | TFSA, RRSP & Income Tax Tools",
+  description:
+    "Free Canadian finance calculators. Calculate income tax, TFSA growth, RRSP vs TFSA, mortgage payments and home affordability. Built for Canadians.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  openGraph: {
+    url: "https://canadiancalculators.ca",
+    siteName: "Canadian Calculators",
+    locale: "en_CA",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -32,6 +40,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7822710303076188"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
