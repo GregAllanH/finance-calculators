@@ -13,8 +13,8 @@ export default function Navbar() {
             <Image
               src="/logo.png"
               alt="Canadian Calculators"
-              width={52}
-              height={52}
+              width={65}
+              height={65}
               className="object-contain"
             />
             <div className="flex flex-col leading-tight">
