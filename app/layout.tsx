@@ -26,6 +26,9 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-touch-icon.png",
   },
+  other: {
+    "impact-site-verification": "4454f62d-97ce-4765-b4a7-1864237f8456",
+  },
   openGraph: {
     url: "https://canadiancalculators.ca",
     siteName: "Canadian Calculators",
