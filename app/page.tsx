@@ -46,6 +46,13 @@ const CATEGORIES = [
         description: 'Calculate federal & provincial income tax, CPP, EI, and take-home pay for 2024 & 2025.',
         badge: 'New',
       },
+      {
+        slug: 'capital-gains',
+        href: '/calculators/capital-gains',
+        title: 'Capital Gains Tax Calculator',
+        description: 'Calculate capital gains tax under the 2024 inclusion rate changes. Compare old vs new rules, apply principal residence exemption, and see your net proceeds.',
+        badge: 'New',
+      },
     ],
   },
   {
