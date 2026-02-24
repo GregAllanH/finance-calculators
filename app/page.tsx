@@ -74,8 +74,14 @@ export default function Home() {
 
         </div>
 
-        <div className="mt-16 text-center text-gray-500 text-sm">
+        {/* Footer */}
+        <div className="mt-16 text-center text-gray-500 text-sm space-y-2">
           <p>Estimates only — not financial advice. Consult CRA or a qualified professional.</p>
+          <p>
+            <Link href="/privacy" className="text-blue-500 hover:underline">
+              Privacy Policy
+            </Link>
+          </p>
         </div>
       </div>
     </main>
