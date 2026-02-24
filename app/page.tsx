@@ -31,6 +31,13 @@ const CATEGORIES = [
         description: 'Compare 15, 20, 25, and 30-year amortization side by side — see total interest paid and monthly payment differences.',
         badge: 'New',
       },
+      {
+        slug: 'rent-vs-buy',
+        href: '/calculators/rent-vs-buy',
+        title: 'Rent vs Buy Calculator',
+        description: 'Compare the true cost of renting vs buying — monthly costs, 10-year net worth, break-even year, stress test, and provincial down payment assistance programs.',
+        badge: 'New',
+      },
     ],
   },
   {
