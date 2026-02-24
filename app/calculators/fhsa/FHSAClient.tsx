@@ -324,12 +324,12 @@ export default function FHSAClient() {
                     <p className="font-semibold text-gray-800 text-lg">
                       {result.yearsToGoal
                         ? `You'll reach your $${fmt(downPaymentGoal)} goal in ${result.yearsToGoal} year${result.yearsToGoal === 1 ? "" : "s"}`
-                        : `Your FHSA won't reach $${fmt(downPaymentGoal)} within 15 years`}
+                        : `Your FHSA will reach $${fmt(result.fhsaFinalValue)} — $${fmt(downPaymentGoal - result.fhsaFinalValue)} short of your $${fmt(downPaymentGoal)} goal`}
                     </p>
                     <p className="text-gray-600 text-sm mt-0.5">
                       {result.onTrack
                         ? "You're on track — your FHSA will cover your down payment goal."
-                        : "Consider increasing contributions or adjusting your down payment goal."}
+                        : `Consider a higher return rate, or supplement the remaining $${fmt(downPaymentGoal - result.fhsaFinalValue)} with a TFSA.`}
                     </p>
                   </div>
                 </div>
