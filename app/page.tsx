@@ -92,6 +92,21 @@ const CATEGORIES = [
     ],
   },
   {
+    id: 'debt',
+    title: 'Debt Management',
+    icon: '💳',
+    description: 'Pay off debt faster, compare strategies, and find the best way to reduce your interest costs.',
+    calculators: [
+      {
+        slug: 'debt-payoff',
+        href: '/calculators/debt-payoff',
+        title: 'Debt Payoff Calculator',
+        description: 'See how fast you can get debt-free. Compare avalanche vs snowball strategies, extra payment impact, and refinancing options.',
+        badge: 'New',
+      },
+    ],
+  },
+  {
     id: 'retirement',
     title: 'Retirement Planning',
     icon: '🌅',
