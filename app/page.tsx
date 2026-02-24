@@ -17,6 +17,13 @@ const STATIC_CALCULATORS = [
     description: 'Estimate your monthly CPP payments at 60, 65, or 70. Find your breakeven age and maximize your lifetime benefit.',
     badge: 'New',
   },
+  {
+    slug: 'fhsa',
+    href: '/calculators/fhsa',
+    title: 'FHSA Calculator',
+    description: 'Project your First Home Savings Account growth, tax savings, and how long until you reach your down payment goal.',
+    badge: 'New',
+  },
 ];
 
 export default function Home() {
@@ -32,7 +39,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-          {/* Static calculators (income tax, cpp etc.) */}
+          {/* Static calculators */}
           {STATIC_CALCULATORS.map((calc) => (
             <Link
               key={calc.slug}
