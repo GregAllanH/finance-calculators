@@ -54,7 +54,12 @@ const CATEGORIES = [
     description: 'Estimate your federal and provincial income tax, take-home pay, and capital gains.',
     calculators: [
       {
-        slug: 'income-tax',
+        slug: 'self-employed-tax',
+        href: '/calculators/self-employed-tax',
+        title: 'Self-Employed Tax Calculator',
+        description: 'Calculate income tax, CPP (both sides), business deductions, and quarterly instalments for Canadian freelancers and business owners.',
+        badge: 'New',
+      },
         href: '/calculators/income-tax',
         title: 'Canadian Income Tax Calculator',
         description: 'Calculate federal & provincial income tax, CPP, EI, and take-home pay for 2024 & 2025.',
