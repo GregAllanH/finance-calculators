@@ -32,6 +32,13 @@ const CATEGORIES = [
         badge: 'New',
       },
       {
+        slug: 'land-transfer-tax',
+        href: '/calculators/land-transfer-tax',
+        title: 'Land Transfer Tax Calculator',
+        description: 'Calculate provincial land transfer tax for every province. Includes Toronto municipal LTT, first-time buyer rebates, and a province-by-province comparison.',
+        badge: 'New',
+      },
+      {
         slug: 'rent-vs-buy',
         href: '/calculators/rent-vs-buy',
         title: 'Rent vs Buy Calculator',
