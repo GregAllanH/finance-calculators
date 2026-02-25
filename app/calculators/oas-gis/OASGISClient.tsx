@@ -543,7 +543,7 @@ export default function OASGISClient() {
               </div>
             )}
 
-            {!result.gisEligible && result.gisMonthly === 0 && (result.netIncome ?? 0) < 60000 && (
+            {!result.gisEligible && result.gisMonthly === 0 && result.income < 60000 && (
               <div className="bg-blue-50 border border-blue-200 rounded-xl p-5">
                 <p className="text-sm font-semibold text-blue-800 mb-1">💡 GIS Strategy Tip</p>
                 <p className="text-sm text-blue-700">
