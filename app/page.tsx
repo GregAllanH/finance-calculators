@@ -104,6 +104,13 @@ const CATEGORIES = [
         description: 'The simplest budgeting rule — 50% needs, 30% wants, 20% savings. See how your spending stacks up and get personalized tips.',
         badge: 'New',
       },
+      {
+        slug: 'net-worth',
+        href: '/calculators/net-worth',
+        title: 'Net Worth Calculator',
+        description: 'Calculate everything you own minus everything you owe. Compare to Canadian median by age and track your wealth-building progress.',
+        badge: 'New',
+      },
     ],
   },
   {
