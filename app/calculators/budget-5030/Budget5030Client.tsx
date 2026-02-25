@@ -78,9 +78,9 @@ export default function Budget5030Client() {
     const targetSavings = monthlyNet * 0.20;
 
     // Actuals
-    const totalNeeds   = Object.values(needs).reduce((s, v) => s + (v ?? 0), 0);
-    const totalWants   = Object.values(wants).reduce((s, v) => s + (v ?? 0), 0);
-    const totalSavings = Object.values(savings).reduce((s, v) => s + (v ?? 0), 0);
+    const totalNeeds   = Object.values(needs).reduce((s, v) => (s ?? 0) + (v ?? 0), 0) as number;
+    const totalWants   = Object.values(wants).reduce((s, v) => (s ?? 0) + (v ?? 0), 0) as number;
+    const totalSavings = Object.values(savings).reduce((s, v) => (s ?? 0) + (v ?? 0), 0) as number;
     const totalSpent   = totalNeeds + totalWants + totalSavings;
     const unallocated  = monthlyNet - totalSpent;
 
