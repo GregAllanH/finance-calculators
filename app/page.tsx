@@ -60,6 +60,13 @@ const CATEGORIES = [
         description: 'Calculate capital gains tax under the 2024 inclusion rate changes. Compare old vs new rules, apply principal residence exemption, and see your net proceeds.',
         badge: 'New',
       },
+      {
+        slug: 'charitable-donation',
+        href: '/calculators/charitable-donation',
+        title: 'Charitable Donation Tax Credit',
+        description: 'Calculate your federal + provincial donation tax credit. See what your generosity truly costs after tax — and why donating securities beats cash.',
+        badge: 'New',
+      },
     ],
   },
   {
