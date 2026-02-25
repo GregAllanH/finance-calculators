@@ -11,11 +11,11 @@ const CATEGORIES = [
     description: 'Calculate payments, compare amortization periods, and find out what you can afford.',
     calculators: [
       {
-        slug: 'mortgage-payment-affordability',
-        href: '/calculator/mortgage-payment-affordability',
+        slug: 'mortgage-payment',
+        href: '/calculators/mortgage-payment',
         title: 'Mortgage Payment Calculator',
-        description: 'Calculate your monthly mortgage payment including CMHC insurance, property tax, and heating costs.',
-        badge: null,
+        description: 'Calculate your monthly payment, CMHC insurance, stress test, total interest, and full amortization schedule.',
+        badge: 'New',
       },
       {
         slug: 'max-house-affordability',
