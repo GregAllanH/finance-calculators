@@ -92,6 +92,21 @@ const CATEGORIES = [
     ],
   },
   {
+    id: 'budgeting',
+    title: 'Budgeting',
+    icon: '📊',
+    description: 'Take control of your money — track spending, build a budget, and find out where every dollar goes.',
+    calculators: [
+      {
+        slug: 'budget-5030',
+        href: '/calculators/budget-5030',
+        title: '50/30/20 Budget Calculator',
+        description: 'The simplest budgeting rule — 50% needs, 30% wants, 20% savings. See how your spending stacks up and get personalized tips.',
+        badge: 'New',
+      },
+    ],
+  },
+  {
     id: 'debt',
     title: 'Debt Management',
     icon: '💳',
