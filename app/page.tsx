@@ -105,10 +105,10 @@ const CATEGORIES = [
       },
       {
         slug: 'tfsa-vs-rrsp',
-        href: '/calculator/tfsa-vs-rrsp',
+        href: '/calculators/tfsa-vs-rrsp',
         title: 'TFSA vs RRSP Comparator',
-        description: 'Compare after-tax retirement value of TFSA vs RRSP based on your current and future tax rates.',
-        badge: null,
+        description: 'Side-by-side after-tax comparison, break-even retirement rate, refund reinvestment strategy, and a personalized recommendation for your income and province.',
+        badge: 'New',
       },
     ],
   },
