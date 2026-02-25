@@ -364,7 +364,7 @@ export default function MortgagePaymentClient() {
               <p className="text-sm font-medium text-blue-200 uppercase tracking-wide">Monthly Mortgage Payment</p>
               <p className="text-6xl font-black mt-2">${fmt(result.monthly)}</p>
               <p className="text-blue-200 text-sm mt-1">
-                {(result.rate)}% · {amortYears}yr amortization · {termYears}yr term
+                {rate}% · {amortYears}yr amortization · {termYears}yr term
               </p>
             </div>
 
