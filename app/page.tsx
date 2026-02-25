@@ -76,6 +76,13 @@ const CATEGORIES = [
     description: 'Grow your TFSA, RRSP, and FHSA — and find out which account is right for your goals.',
     calculators: [
       {
+        slug: 'rrsp-contribution',
+        href: '/calculators/rrsp-contribution',
+        title: 'RRSP Contribution Room Calculator',
+        description: 'Calculate your available RRSP room for 2024 & 2025. Get your estimated tax refund, check for over-contributions, and see how your contribution grows.',
+        badge: 'New',
+      },
+      {
         slug: 'fhsa',
         href: '/calculators/fhsa',
         title: 'FHSA Calculator',
