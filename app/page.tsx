@@ -156,6 +156,13 @@ const CATEGORIES = [
     description: 'Plan your retirement income with CPP estimates and savings projections.',
     calculators: [
       {
+        slug: 'oas-gis',
+        href: '/calculators/oas-gis',
+        title: 'OAS & GIS Estimator',
+        description: 'Estimate your Old Age Security and Guaranteed Income Supplement. Includes clawback, deferral comparison, partner Allowance, and total government retirement income.',
+        badge: 'New',
+      },
+      {
         slug: 'cpp-benefits',
         href: '/calculators/cpp-benefits',
         title: 'CPP Benefits Estimator',
