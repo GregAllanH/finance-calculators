@@ -60,6 +60,8 @@ const CATEGORIES = [
         description: 'Calculate income tax, CPP (both sides), business deductions, and quarterly instalments for Canadian freelancers and business owners.',
         badge: 'New',
       },
+      {
+        slug: 'income-tax',
         href: '/calculators/income-tax',
         title: 'Canadian Income Tax Calculator',
         description: 'Calculate federal & provincial income tax, CPP, EI, and take-home pay for 2024 & 2025.',
