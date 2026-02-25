@@ -18,11 +18,11 @@ const CATEGORIES = [
         badge: 'New',
       },
       {
-        slug: 'max-house-affordability',
-        href: '/calculator/max-house-affordability',
+        slug: 'max-affordability',
+        href: '/calculators/max-affordability',
         title: 'Maximum Home Affordability',
-        description: 'Find the maximum home price you can afford based on your income, debts, and down payment.',
-        badge: null,
+        description: 'Find the maximum home price a lender will approve using GDS/TDS ratios and the stress test. Includes debt impact and conservative vs maximum scenarios.',
+        badge: 'New',
       },
       {
         slug: 'mortgage-comparison',
@@ -97,11 +97,11 @@ const CATEGORIES = [
         badge: 'New',
       },
       {
-        slug: 'tfsa-contribution-growth',
-        href: '/calculator/tfsa-contribution-growth',
-        title: 'TFSA Contribution & Growth Estimator',
-        description: 'Estimate how much your TFSA will grow based on your contributions and expected annual return.',
-        badge: null,
+        slug: 'tfsa-growth',
+        href: '/calculators/tfsa-growth',
+        title: 'TFSA Growth Calculator',
+        description: 'Project your TFSA balance with investment type presets, contribution room tracker, tax savings estimate, and year-by-year growth chart.',
+        badge: 'New',
       },
       {
         slug: 'tfsa-vs-rrsp',
