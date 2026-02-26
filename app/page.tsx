@@ -123,6 +123,13 @@ const CATEGORIES = [
         description: 'Calculate your quarterly CRA tax instalments for 2025. Compare all three CRA methods, get your payment schedule, penalty estimates, and self-employed CPP breakdown.',
         badge: 'New',
       },
+      {
+        slug: 'political-contribution',
+        href: '/calculators/political-contribution',
+        title: 'Political Contribution Tax Credit Calculator',
+        description: 'Calculate your federal and provincial political contribution tax credits. See the three-tier federal credit structure and your true net cost — often just 25 cents on the dollar.',
+        badge: 'New',
+      },
     ],
   },
   {
