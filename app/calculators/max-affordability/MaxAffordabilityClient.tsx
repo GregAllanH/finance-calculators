@@ -227,7 +227,7 @@ export default function MaxAffordabilityClient() {
                 thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                 placeholder="$90,000"
                 onValueChange={(v) => setAnnualIncome(v.floatValue ?? null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
             </div>
             <div>
@@ -239,7 +239,7 @@ export default function MaxAffordabilityClient() {
                 thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                 placeholder="$0"
                 onValueChange={(v) => setCoIncome(v.floatValue ?? null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
             </div>
           </div>
@@ -251,7 +251,7 @@ export default function MaxAffordabilityClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$100,000"
               onValueChange={(v) => setDownPayment(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -263,7 +263,7 @@ export default function MaxAffordabilityClient() {
                 type="number" min="0.5" max="20" step="0.05"
                 value={rate}
                 onChange={(e) => setRate(Number(e.target.value) || 5)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
             </div>
             <div>
@@ -304,7 +304,7 @@ export default function MaxAffordabilityClient() {
                     thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                     placeholder={d.placeholder}
                     onValueChange={(v) => d.setter(v.floatValue ?? null)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
                   />
                 </div>
               ))}
@@ -328,7 +328,7 @@ export default function MaxAffordabilityClient() {
                   thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                   placeholder="$150"
                   onValueChange={(v) => setHeating(v.floatValue ?? null)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
                 />
                 <p className="text-xs text-gray-400 mt-0.5">Default: $150</p>
               </div>
@@ -338,7 +338,7 @@ export default function MaxAffordabilityClient() {
                   thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                   placeholder="$0"
                   onValueChange={(v) => setCondoFee(v.floatValue ?? null)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
                 />
                 <p className="text-xs text-gray-400 mt-0.5">50% counted by lenders</p>
               </div>
@@ -348,7 +348,7 @@ export default function MaxAffordabilityClient() {
                   type="number" min="0.1" max="5" step="0.05"
                   defaultValue={1.0}
                   onChange={(e) => setPropTaxRate(Number(e.target.value) || 1)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
                 />
                 <p className="text-xs text-gray-400 mt-0.5">Typical: 0.5–2%</p>
               </div>

@@ -283,7 +283,7 @@ export default function OASGISClient() {
                 type="number" min="55" max="85" step="1"
                 placeholder="65"
                 onChange={(e) => setCurrentAge(Number(e.target.value) || null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
             </div>
             <div>
@@ -320,7 +320,7 @@ export default function OASGISClient() {
               type="number" min="10" max="50" step="1"
               defaultValue={40}
               onChange={(e) => setYearsInCanada(Number(e.target.value) || null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
             {yearsInCanada && yearsInCanada < 40 && (
               <p className="text-xs text-amber-600 mt-1">
@@ -335,7 +335,7 @@ export default function OASGISClient() {
             <select
               value={maritalStatus}
               onChange={(e) => setMaritalStatus(e.target.value as MaritalStatus)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 bg-white text-gray-900"
             >
               {provinceList.map(([val, label]) => (
                 <option key={val} value={val}>{label}</option>
@@ -353,7 +353,7 @@ export default function OASGISClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$25,000"
               onValueChange={(v) => setNetIncome(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
             {netIncome && netIncome > OAS_CLAWBACK_THRESHOLD && (
               <p className="text-xs text-red-500 mt-1">
@@ -372,7 +372,7 @@ export default function OASGISClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$800"
               onValueChange={(v) => setCppIncome(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
             <p className="text-xs text-gray-400 mt-1">
               Don't know your CPP? Use our <a href="/calculators/cpp-benefits" className="text-blue-500 hover:underline">CPP Benefits Calculator</a>
@@ -388,7 +388,7 @@ export default function OASGISClient() {
                   thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                   placeholder="$20,000"
                   onValueChange={(v) => setPartnerIncome(v.floatValue ?? null)}
-                  className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                  className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
                 />
               </div>
               <div>
@@ -397,7 +397,7 @@ export default function OASGISClient() {
                   type="number" min="55" max="85" step="1"
                   placeholder="63"
                   onChange={(e) => setPartnerAge(Number(e.target.value) || null)}
-                  className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                  className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
                 />
               </div>
             </div>

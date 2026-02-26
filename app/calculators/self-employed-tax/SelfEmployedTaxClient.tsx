@@ -337,7 +337,7 @@ export default function SelfEmployedTaxClient() {
             <select
               value={province}
               onChange={(e) => setProvince(e.target.value)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 bg-white text-gray-900"
             >
               {provinceList.map(([code, data]) => (
                 <option key={code} value={code}>{data.name}</option>
@@ -355,7 +355,7 @@ export default function SelfEmployedTaxClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$85,000"
               onValueChange={(v) => setGrossRevenue(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -369,7 +369,7 @@ export default function SelfEmployedTaxClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$0"
               onValueChange={(v) => setOtherIncome(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -383,7 +383,7 @@ export default function SelfEmployedTaxClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$0"
               onValueChange={(v) => setHasRRSP(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -430,7 +430,7 @@ export default function SelfEmployedTaxClient() {
                   placeholder="$0"
                   value={deductions[d.key] ?? ""}
                   onValueChange={(v) => setDeductions(prev => ({ ...prev, [d.key]: v.floatValue ?? null }))}
-                  className="w-28 px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                  className="w-28 px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
                 />
               </div>
             ))}

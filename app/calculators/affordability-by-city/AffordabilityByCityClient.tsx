@@ -206,7 +206,7 @@ export default function AffordabilityByCityClient() {
                 thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                 placeholder="$120,000"
                 onValueChange={(v) => setIncome(v.floatValue ?? null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
             </div>
             <div>
@@ -215,7 +215,7 @@ export default function AffordabilityByCityClient() {
                 thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                 placeholder="$100,000"
                 onValueChange={(v) => setDownPayment(v.floatValue ?? null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
             </div>
             <div>
@@ -224,7 +224,7 @@ export default function AffordabilityByCityClient() {
                 type="number" min="0.5" max="15" step="0.05"
                 value={rate}
                 onChange={(e) => setRate(Number(e.target.value) || 5)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
             </div>
             <div>
@@ -233,7 +233,7 @@ export default function AffordabilityByCityClient() {
                 thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                 placeholder="$0"
                 onValueChange={(v) => setDebts(v.floatValue ?? null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
             </div>
           </div>
@@ -293,7 +293,7 @@ export default function AffordabilityByCityClient() {
                 <select
                   value={filterProv}
                   onChange={(e) => setFilterProv(e.target.value)}
-                  className="px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none bg-white"
+                  className="px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 bg-white"
                 >
                   <option value="all">All Provinces</option>
                   {provinces.filter(p => p !== "all").map(p => (
@@ -306,7 +306,7 @@ export default function AffordabilityByCityClient() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
-                  className="px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none bg-white"
+                  className="px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 bg-white"
                 >
                   <option value="score">Affordability Score</option>
                   <option value="price">Home Price (Low→High)</option>

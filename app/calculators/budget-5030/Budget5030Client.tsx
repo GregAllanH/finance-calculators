@@ -192,7 +192,7 @@ export default function Budget5030Client() {
                 placeholder={cat.placeholder}
                 value={values[cat.key] ?? ""}
                 onValueChange={(v) => setCategory(setter, cat.key, v.floatValue ?? null)}
-                className="w-28 px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                className="w-28 px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
               />
             </div>
           ))}
@@ -227,7 +227,7 @@ export default function Budget5030Client() {
                 thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                 placeholder="$5,000"
                 onValueChange={(v) => setGrossIncome(v.floatValue ?? null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
             </div>
 
@@ -237,7 +237,7 @@ export default function Budget5030Client() {
               <select
                 value={frequency}
                 onChange={(e) => setFrequency(Number(e.target.value))}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 bg-white text-gray-900"
               >
                 {PAY_FREQUENCIES.map((f, i) => (
                   <option key={f.label} value={i}>{f.label}</option>
@@ -256,7 +256,7 @@ export default function Budget5030Client() {
               type="number" min="0" max="60" step="1"
               defaultValue={25}
               onChange={(e) => setTaxRate(Number(e.target.value) || null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
             <p className="text-xs text-gray-400 mt-1">
               Typical range: 20–35%. Use our <a href="/calculators/income-tax" className="text-blue-500 hover:underline">Income Tax Calculator</a> for a precise figure.

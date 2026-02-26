@@ -212,7 +212,7 @@ export default function TFSAGrowthClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$0"
               onValueChange={(v) => setCurrentBalance(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -226,7 +226,7 @@ export default function TFSAGrowthClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$7,000"
               onValueChange={(v) => setAnnualContrib(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -263,7 +263,7 @@ export default function TFSAGrowthClient() {
                   type="number" min="0" max="30" step="0.1"
                   value={customRate}
                   onChange={(e) => setCustomRate(Number(e.target.value) || 0)}
-                  className="w-40 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                  className="w-40 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
                 />
               </div>
             )}
@@ -301,7 +301,7 @@ export default function TFSAGrowthClient() {
                   type="number" min="1960" max="2007" step="1"
                   placeholder="1985"
                   onChange={(e) => setBirthYear(Number(e.target.value) || null)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
                 />
               </div>
               <div>
@@ -310,7 +310,7 @@ export default function TFSAGrowthClient() {
                   thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                   placeholder="$45,000"
                   onValueChange={(v) => setAlreadyContrib(v.floatValue ?? null)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
                 />
               </div>
             </div>

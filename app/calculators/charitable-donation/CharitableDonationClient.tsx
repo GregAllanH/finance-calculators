@@ -213,7 +213,7 @@ export default function CharitableDonationClient() {
             <select
               value={province}
               onChange={(e) => setProvince(e.target.value)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 bg-white text-gray-900"
             >
               {provinceList.map(([code, data]) => (
                 <option key={code} value={code}>{data.name}</option>
@@ -231,7 +231,7 @@ export default function CharitableDonationClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$90,000"
               onValueChange={(v) => setIncome(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
             {income && (
               <p className="text-xs text-gray-400 mt-1">
@@ -250,7 +250,7 @@ export default function CharitableDonationClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$0"
               onValueChange={(v) => setCarryforward(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -317,7 +317,7 @@ export default function CharitableDonationClient() {
                     thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                     placeholder="$500"
                     onValueChange={(v) => updateDonation(d.id, "amount", v.floatValue ?? null)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
                   />
                 </div>
                 <div>
@@ -325,7 +325,7 @@ export default function CharitableDonationClient() {
                   <select
                     value={d.type}
                     onChange={(e) => updateDonation(d.id, "type", e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-sm text-gray-700"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 bg-white text-sm text-gray-700"
                   >
                     {DONATION_TYPES.map(t => (
                       <option key={t} value={t}>{t}</option>

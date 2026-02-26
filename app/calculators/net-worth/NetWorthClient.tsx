@@ -210,7 +210,7 @@ export default function NetWorthClient() {
                   placeholder="$0"
                   value={values[item.key] ?? ""}
                   onValueChange={(v) => setVal(setter, item.key, v.floatValue ?? null)}
-                  className="w-32 px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm bg-white"
+                  className="w-32 px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm bg-white"
                 />
               </div>
             ))}

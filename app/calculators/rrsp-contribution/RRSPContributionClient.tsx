@@ -225,7 +225,7 @@ export default function RRSPContributionClient() {
             <select
               value={province}
               onChange={(e) => setProvince(e.target.value)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 bg-white text-gray-900"
             >
               {provinceList.map(([code, data]) => (
                 <option key={code} value={code}>{data.name}</option>
@@ -243,7 +243,7 @@ export default function RRSPContributionClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$90,000"
               onValueChange={(v) => setEarnedIncome(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
             {earnedIncome && (
               <p className="text-xs text-gray-400 mt-1">
@@ -262,7 +262,7 @@ export default function RRSPContributionClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$45,000"
               onValueChange={(v) => setPriorRoom(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
             <p className="text-xs text-gray-400 mt-1">
               Find this on your Notice of Assessment or at <a href="https://www.canada.ca/en/revenue-agency/services/e-services/digital-services-individuals/account-individuals.html" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">CRA My Account</a>.
@@ -279,7 +279,7 @@ export default function RRSPContributionClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$0"
               onValueChange={(v) => setPAContributions(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -293,7 +293,7 @@ export default function RRSPContributionClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$0"
               onValueChange={(v) => setContributions(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -307,7 +307,7 @@ export default function RRSPContributionClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$10,000"
               onValueChange={(v) => setPlannedContrib(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
         </div>

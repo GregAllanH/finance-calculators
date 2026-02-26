@@ -238,7 +238,7 @@ export default function GICHISAClient() {
                   type="number" min="0.01" max="20" step="0.01"
                   value={customRate}
                   onChange={(e) => setCustomRate(Number(e.target.value) || 0)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
                 />
               </div>
               <div>
@@ -246,7 +246,7 @@ export default function GICHISAClient() {
                 <select
                   value={compoundFreq}
                   onChange={(e) => setCompoundFreq(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 bg-white"
                 >
                   {COMPOUND_FREQUENCIES.map(f => (
                     <option key={f.value} value={f.value}>{f.label} ({f.n}×/yr)</option>
@@ -276,7 +276,7 @@ export default function GICHISAClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$10,000"
               onValueChange={(v) => setPrincipal(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -290,7 +290,7 @@ export default function GICHISAClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$0"
               onValueChange={(v) => setMonthlyDeposit(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -346,7 +346,7 @@ export default function GICHISAClient() {
                   type="number" min="15" max="55" step="1"
                   value={marginalRate}
                   onChange={(e) => setMarginalRate(Number(e.target.value) || 40)}
-                  className="w-40 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                  className="w-40 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
                 />
               </div>
             )}

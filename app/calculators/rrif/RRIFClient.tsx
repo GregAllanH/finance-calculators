@@ -372,7 +372,7 @@ export default function RRIFClient() {
               <select
                 value={province}
                 onChange={(e) => setProvince(e.target.value)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 bg-white text-gray-900"
               >
                 {provinceList.map(([code, data]) => (
                   <option key={code} value={code}>{data.name}</option>
@@ -385,7 +385,7 @@ export default function RRIFClient() {
                 type="number" min="55" max="100" step="1"
                 placeholder="71"
                 onChange={(e) => setCurrentAge(Number(e.target.value) || null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
             </div>
           </div>
@@ -396,7 +396,7 @@ export default function RRIFClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$500,000"
               onValueChange={(v) => setRrifBalance(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -406,7 +406,7 @@ export default function RRIFClient() {
               type="number" min="0" max="12" step="0.5"
               value={returnRate}
               onChange={(e) => setReturnRate(Number(e.target.value) || 0)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
             <p className="text-xs text-gray-400 mt-1">Conservative: 3–4% · Balanced: 5–6% · Growth: 7–8%</p>
           </div>
@@ -420,7 +420,7 @@ export default function RRIFClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$0"
               onValueChange={(v) => setExtraWithdraw(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -441,7 +441,7 @@ export default function RRIFClient() {
                     thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                     placeholder={f.placeholder}
                     onValueChange={(v) => f.setter(v.floatValue ?? null)}
-                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
                   />
                   <p className="text-xs text-gray-400 mt-0.5">{f.hint}</p>
                 </div>
@@ -471,7 +471,7 @@ export default function RRIFClient() {
                   type="number" min="18" max="95" step="1"
                   placeholder="68"
                   onChange={(e) => setSpouseAge(Number(e.target.value) || null)}
-                  className="w-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                  className="w-32 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
                 />
               </div>
             )}

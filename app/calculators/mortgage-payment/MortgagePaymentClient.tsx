@@ -198,7 +198,7 @@ export default function MortgagePaymentClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$650,000"
               onValueChange={(v) => setHomePrice(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -227,7 +227,7 @@ export default function MortgagePaymentClient() {
               allowNegative={false}
               placeholder={downType === "amount" ? "$130,000" : "20%"}
               onValueChange={(v) => setDownPayment(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
             {homePrice && downAmt !== null && (
               <p className={`text-xs mt-1 ${downPct < 0.2 ? "text-amber-600" : "text-gray-400"}`}>
@@ -246,7 +246,7 @@ export default function MortgagePaymentClient() {
               type="number" min="0.5" max="20" step="0.05"
               value={rate}
               onChange={(e) => setRate(Number(e.target.value) || 5)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -298,7 +298,7 @@ export default function MortgagePaymentClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$0"
               onValueChange={(v) => setExtraPayment(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -312,7 +312,7 @@ export default function MortgagePaymentClient() {
                   thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                   placeholder="$6,000"
                   onValueChange={(v) => setPropTax(v.floatValue ?? null)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
                 />
               </div>
               <div>
@@ -321,7 +321,7 @@ export default function MortgagePaymentClient() {
                   thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                   placeholder="$0"
                   onValueChange={(v) => setCondoFee(v.floatValue ?? null)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
                 />
               </div>
               <div>
@@ -330,7 +330,7 @@ export default function MortgagePaymentClient() {
                   thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                   placeholder="$150"
                   onValueChange={(v) => setInsurance(v.floatValue ?? null)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
                 />
               </div>
             </div>

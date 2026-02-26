@@ -267,7 +267,7 @@ export default function LandTransferTaxClient() {
             <select
               value={province}
               onChange={(e) => { setProvince(e.target.value); setIsToronto(false); }}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 bg-white text-gray-900"
             >
               {provinceList.map(([code, data]) => (
                 <option key={code} value={code}>{data.name}</option>
@@ -282,7 +282,7 @@ export default function LandTransferTaxClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$650,000"
               onValueChange={(v) => setPurchasePrice(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 

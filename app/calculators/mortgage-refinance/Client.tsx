@@ -275,7 +275,7 @@ export default function MortgageRefinanceClient() {
                 thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                 placeholder="$450,000"
                 onValueChange={(v) => setCurrentBalance(v.floatValue ?? null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
             </div>
             <div>
@@ -284,7 +284,7 @@ export default function MortgageRefinanceClient() {
                 type="number" min="0.5" max="15" step="0.01"
                 placeholder="5.49"
                 onChange={(e) => setCurrentRate(Number(e.target.value) || null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
             </div>
             <div>
@@ -293,7 +293,7 @@ export default function MortgageRefinanceClient() {
                 type="number" min="1" max="120" step="1"
                 placeholder="24"
                 onChange={(e) => setMonthsRemaining(Number(e.target.value) || null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
               <p className="text-xs text-gray-400 mt-1">e.g. 2 years left = 24 months</p>
             </div>
@@ -346,7 +346,7 @@ export default function MortgageRefinanceClient() {
                 type="number" min="0.5" max="15" step="0.01"
                 placeholder="4.19"
                 onChange={(e) => setNewRate(Number(e.target.value) || null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
               {currentRate && newRate && (
                 <p className={`text-xs font-medium mt-1 ${newRate < currentRate ? "text-green-600" : "text-red-500"}`}>
@@ -376,7 +376,7 @@ export default function MortgageRefinanceClient() {
                 thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                 placeholder="$0"
                 onValueChange={(v) => setCashOut(v.floatValue ?? null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
             </div>
             <div>
@@ -388,7 +388,7 @@ export default function MortgageRefinanceClient() {
                 thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                 placeholder="$0"
                 onValueChange={(v) => setExtraCosts(v.floatValue ?? null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
             </div>
           </div>

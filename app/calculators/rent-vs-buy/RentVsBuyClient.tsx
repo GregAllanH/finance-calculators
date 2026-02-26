@@ -376,7 +376,7 @@ export default function RentVsBuyClient() {
                 <select
                   value={province}
                   onChange={(e) => setProvince(e.target.value)}
-                  className="text-sm px-2 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white"
+                  className="text-sm px-2 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 bg-white"
                 >
                   {provinceList.map(([code, data]) => (
                     <option key={code} value={code}>{data.name}</option>
@@ -425,7 +425,7 @@ export default function RentVsBuyClient() {
             <select
               value={province}
               onChange={(e) => setProvince(e.target.value)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 bg-white text-gray-900"
             >
               {provinceList.map(([code, data]) => (
                 <option key={code} value={code}>{data.name}</option>
@@ -438,7 +438,7 @@ export default function RentVsBuyClient() {
             <NumericFormat thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$600,000"
               onValueChange={(v) => setHomePrice(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -447,7 +447,7 @@ export default function RentVsBuyClient() {
             <NumericFormat thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$120,000"
               onValueChange={(v) => setDownPayment(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
             {homePrice && downPayment && (
               <p className="text-xs text-gray-400 mt-1">
@@ -461,7 +461,7 @@ export default function RentVsBuyClient() {
             <label className="block text-sm font-medium text-gray-700 mb-2">Mortgage Interest Rate (%)</label>
             <input type="number" min="0.5" max="20" step="0.1" defaultValue={5}
               onChange={(e) => setMortgageRate(Number(e.target.value) || null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -469,7 +469,7 @@ export default function RentVsBuyClient() {
             <label className="block text-sm font-medium text-gray-700 mb-2">Amortization Period (years)</label>
             <input type="number" min="5" max="30" step="1" defaultValue={25}
               onChange={(e) => setAmortYears(Number(e.target.value) || null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -479,7 +479,7 @@ export default function RentVsBuyClient() {
               <NumericFormat thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                 placeholder="$6,000"
                 onValueChange={(v) => setPropertyTax(v.floatValue ?? null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
               />
             </div>
             <div>
@@ -487,7 +487,7 @@ export default function RentVsBuyClient() {
               <NumericFormat thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                 placeholder="$6,000"
                 onValueChange={(v) => setMaintenance(v.floatValue ?? null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
               />
             </div>
             <div>
@@ -495,7 +495,7 @@ export default function RentVsBuyClient() {
               <NumericFormat thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                 placeholder="$150"
                 onValueChange={(v) => setHomeInsurance(v.floatValue ?? null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
               />
             </div>
           </div>
@@ -509,7 +509,7 @@ export default function RentVsBuyClient() {
             <NumericFormat thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$2,500"
               onValueChange={(v) => setMonthlyRent(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -518,21 +518,21 @@ export default function RentVsBuyClient() {
               <label className="block text-sm font-medium text-gray-700 mb-2">Annual Rent Increase (%)</label>
               <input type="number" min="0" max="10" step="0.5" defaultValue={2}
                 onChange={(e) => setRentIncrease(Number(e.target.value) || null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Home Appreciation (%/yr)</label>
               <input type="number" min="0" max="15" step="0.5" defaultValue={3}
                 onChange={(e) => setHomeAppreciation(Number(e.target.value) || null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Investment Return (%/yr)</label>
               <input type="number" min="0" max="20" step="0.5" defaultValue={6}
                 onChange={(e) => setInvestReturn(Number(e.target.value) || null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
               <p className="text-xs text-gray-400 mt-1">Return on down payment if invested instead</p>
             </div>

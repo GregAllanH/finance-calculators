@@ -352,7 +352,7 @@ export default function DebtPayoffClient() {
                     thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                     placeholder="$5,000"
                     onValueChange={(v) => updateDebt(debt.id, "balance", v.floatValue ?? null)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
                   />
                 </div>
                 <div>
@@ -361,7 +361,7 @@ export default function DebtPayoffClient() {
                     type="number" min="0" max="50" step="0.01"
                     value={debt.rate ?? ""}
                     onChange={(e) => updateDebt(debt.id, "rate", Number(e.target.value) || null)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
                   />
                 </div>
                 <div>
@@ -370,7 +370,7 @@ export default function DebtPayoffClient() {
                     thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                     placeholder="$150"
                     onValueChange={(v) => updateDebt(debt.id, "minPayment", v.floatValue ?? null)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right text-sm"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right text-sm"
                   />
                 </div>
               </div>
@@ -387,7 +387,7 @@ export default function DebtPayoffClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$100"
               onValueChange={(v) => setExtraPayment(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
         </div>

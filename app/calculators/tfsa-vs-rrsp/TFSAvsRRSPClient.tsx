@@ -177,7 +177,7 @@ export default function TFSAvsRRSPClient() {
             <select
               value={province}
               onChange={(e) => setProvince(e.target.value)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 bg-white text-gray-900"
             >
               {provinceList.map(([code, data]) => (
                 <option key={code} value={code}>{data.name}</option>
@@ -195,7 +195,7 @@ export default function TFSAvsRRSPClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$90,000"
               onValueChange={(v) => setAnnualIncome(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
             {annualIncome && (
               <p className="text-xs text-gray-400 mt-1">
@@ -214,7 +214,7 @@ export default function TFSAvsRRSPClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$7,000"
               onValueChange={(v) => setContribution(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -227,7 +227,7 @@ export default function TFSAvsRRSPClient() {
               type="number" min="0" max="20" step="0.5"
               value={returnRate}
               onChange={(e) => setReturnRate(Number(e.target.value) || 7)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -270,7 +270,7 @@ export default function TFSAvsRRSPClient() {
                   type="number" min="0" max="60" step="1"
                   placeholder={result ? fmtPct(result.retRate) : "Auto"}
                   onChange={(e) => setRetirementRate(e.target.value ? Number(e.target.value) : null)}
-                  className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                  className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
                 />
                 <p className="text-xs text-gray-400 mt-1">
                   Auto-estimate: ~60% of your current rate. Actual depends on retirement income sources (CPP, OAS, RRIF, etc.)

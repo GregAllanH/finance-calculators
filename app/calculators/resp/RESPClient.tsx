@@ -300,7 +300,7 @@ export default function RESPClient() {
             <select
               value={province}
               onChange={(e) => setProvince(e.target.value)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 bg-white text-gray-900"
             >
               {provinceList.map(([code, name]) => (
                 <option key={code} value={code}>{name}</option>
@@ -320,7 +320,7 @@ export default function RESPClient() {
               type="number" min="0" max="17" step="1"
               placeholder="0"
               onChange={(e) => setChildAge(e.target.value !== "" ? Number(e.target.value) : null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
             {childAge !== null && (
               <p className="text-xs text-gray-400 mt-1">
@@ -336,7 +336,7 @@ export default function RESPClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$0"
               onValueChange={(v) => setCurrentBalance(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
           </div>
 
@@ -362,14 +362,14 @@ export default function RESPClient() {
                 thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                 placeholder="$2,500"
                 onValueChange={(v) => setAnnualContrib(v.floatValue ?? null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
             ) : (
               <NumericFormat
                 thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
                 placeholder="$208"
                 onValueChange={(v) => setMonthlyContrib(v.floatValue ?? null)}
-                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+                className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
               />
             )}
             <p className="text-xs text-gray-400 mt-1">
@@ -384,7 +384,7 @@ export default function RESPClient() {
               type="number" min="0" max="15" step="0.5"
               value={returnRate}
               onChange={(e) => setReturnRate(Number(e.target.value) || 6)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
             <p className="text-xs text-gray-400 mt-1">Typical range: 4–5% (conservative) to 7–9% (growth ETF)</p>
           </div>
@@ -399,7 +399,7 @@ export default function RESPClient() {
               thousandSeparator prefix="$" decimalScale={0} allowNegative={false}
               placeholder="$90,000"
               onValueChange={(v) => setFamilyIncome(v.floatValue ?? null)}
-              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-right"
+              className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-900 dark:bg-white dark:text-gray-900 text-right"
             />
             {familyIncome !== null && familyIncome <= CLB_INCOME_THRESHOLD && (
               <p className="text-xs text-green-600 mt-1 font-medium">
