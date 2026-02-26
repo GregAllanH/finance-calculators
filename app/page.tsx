@@ -17,6 +17,8 @@ const CATEGORIES = [
         description: 'Compare home affordability across 20 Canadian cities. See where you qualify, monthly costs, income needed, and land transfer tax — side by side.',
         badge: 'New',
       },
+      {
+        slug: 'mortgage-payment',
         href: '/calculators/mortgage-payment',
         title: 'Mortgage Payment Calculator',
         description: 'Calculate your monthly payment, CMHC insurance, stress test, total interest, and full amortization schedule.',
