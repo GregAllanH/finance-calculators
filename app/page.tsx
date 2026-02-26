@@ -68,7 +68,12 @@ const CATEGORIES = [
     description: 'Estimate your federal and provincial income tax, take-home pay, and capital gains.',
     calculators: [
       {
-        slug: 'payroll-deductions',
+        slug: 'rental-income-tax',
+        href: '/calculators/rental-income-tax',
+        title: 'Rental Income Tax Calculator',
+        description: 'Calculate net rental income, deductible expenses, CCA depreciation, and tax owing on your Canadian rental property. Covers T776, rental losses, and partial use.',
+        badge: 'New',
+      },
         href: '/calculators/payroll-deductions',
         title: 'Payroll Deductions Calculator',
         description: 'Calculate exact take-home pay after income tax, CPP/QPP, EI, RRSP, and benefits. All provinces, all pay frequencies. Includes pay stub view and raise impact.',
