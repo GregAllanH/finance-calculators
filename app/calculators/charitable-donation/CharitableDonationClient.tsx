@@ -2,6 +2,7 @@
 
 // app/calculators/charitable-donation/CharitableDonationClient.tsx
 
+import PrintButton from "@/components/PrintButton";
 import { useState, useMemo } from "react";
 import { NumericFormat } from "react-number-format";
 
@@ -169,7 +170,7 @@ export default function CharitableDonationClient() {
         </button>
 
         {showEligible && (
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
+          <div className="print:hidden bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
             <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wide">Eligible Donations</h3>
             <div className="space-y-3">
               {[
@@ -370,6 +371,10 @@ export default function CharitableDonationClient() {
                 <p className="text-3xl font-bold text-green-600 mt-2">{fmtPct(result.effectiveRate)}%</p>
                 <p className="text-gray-400 text-sm mt-1">of total donated</p>
               </div>
+            </div>
+            {/* Print button */}
+            <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
             </div>
 
             {/* Limit warning */}

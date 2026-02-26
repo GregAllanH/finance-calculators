@@ -2,6 +2,7 @@
 
 // app/calculators/rent-vs-buy/RentVsBuyClient.tsx
 
+import PrintButton from "@/components/PrintButton";
 import { useState, useMemo } from "react";
 import { NumericFormat } from "react-number-format";
 
@@ -348,7 +349,7 @@ export default function RentVsBuyClient() {
         </button>
 
         {showPrograms && (
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-6">
+          <div className="print:hidden bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-6">
             <div>
               <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">🇨🇦 Federal Programs</h3>
               <div className="space-y-3">
@@ -560,6 +561,10 @@ export default function RentVsBuyClient() {
                 <p className="text-4xl font-bold text-gray-900 mt-2">${fmt(result.monthlyRentCost)}</p>
                 <p className="text-gray-400 text-sm mt-1">rent + renter's insurance</p>
               </div>
+            </div>
+            {/* Print button */}
+            <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
             </div>
 
             {/* Monthly diff callout */}

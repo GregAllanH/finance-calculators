@@ -2,6 +2,7 @@
 
 // app/calculators/mortgage-payment/MortgagePaymentClient.tsx
 
+import PrintButton from "@/components/PrintButton";
 import { useState, useMemo } from "react";
 import { NumericFormat } from "react-number-format";
 
@@ -188,7 +189,7 @@ export default function MortgagePaymentClient() {
         </div>
 
         {/* Inputs */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-5">
+        <div className="print:hidden bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-5">
           <h2 className="text-base font-semibold text-gray-800">Mortgage Details</h2>
 
           {/* Home price */}
@@ -407,6 +408,10 @@ export default function MortgagePaymentClient() {
                         />
                       </div>
                     </div>
+            {/* Print button */}
+            <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
+            </div>
                   ))}
                   <div className="flex justify-between items-center pt-2 border-t border-gray-100">
                     <span className="text-sm font-bold text-gray-800">Total Monthly</span>

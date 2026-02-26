@@ -2,6 +2,7 @@
 
 // app/calculators/rrif/RRIFClient.tsx
 
+import PrintButton from "@/components/PrintButton";
 import { useState, useMemo } from "react";
 import { NumericFormat } from "react-number-format";
 
@@ -323,7 +324,7 @@ export default function RRIFClient() {
         </button>
 
         {showInfo && (
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
+          <div className="print:hidden bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
             {[
               {
                 icon: "📅", title: "RRSP Must Be Converted by December 31 of Your 71st Year",
@@ -573,6 +574,10 @@ export default function RRIFClient() {
                   </div>
                 ))}
               </div>
+            </div>
+            {/* Print button */}
+            <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
             </div>
 
             {/* Balance decay bar chart */}

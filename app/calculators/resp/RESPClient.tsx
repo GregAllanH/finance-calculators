@@ -2,6 +2,7 @@
 
 // app/calculators/resp/RESPClient.tsx
 
+import PrintButton from "@/components/PrintButton";
 import { useState, useMemo } from "react";
 import { NumericFormat } from "react-number-format";
 
@@ -255,7 +256,7 @@ export default function RESPClient() {
         </button>
 
         {showInfo && (
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
+          <div className="print:hidden bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
             {[
               {
                 icon: "🇨🇦", title: "Canada Education Savings Grant (CESG)",
@@ -480,6 +481,10 @@ export default function RESPClient() {
                   ))}
                 </div>
               </div>
+            {/* Print button */}
+            <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
+            </div>
             )}
 
             {/* CLB notice for eligible */}

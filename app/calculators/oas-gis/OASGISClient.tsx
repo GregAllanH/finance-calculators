@@ -2,6 +2,7 @@
 
 // app/calculators/oas-gis/OASGISClient.tsx
 
+import PrintButton from "@/components/PrintButton";
 import { useState, useMemo } from "react";
 import { NumericFormat } from "react-number-format";
 
@@ -236,7 +237,7 @@ export default function OASGISClient() {
         </button>
 
         {showGISInfo && (
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
+          <div className="print:hidden bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
             {[
               {
                 icon: "🇨🇦", title: "Old Age Security (OAS)",
@@ -528,6 +529,10 @@ export default function OASGISClient() {
                   <span className="text-xl font-black text-blue-700">${fmt(result.totalMonthly)}</span>
                 </div>
               </div>
+            {/* Print button */}
+            <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
+            </div>
             </div>
 
             {/* GIS eligible callout */}

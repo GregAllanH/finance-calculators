@@ -2,6 +2,7 @@
 
 // app/calculators/rrsp-contribution/RRSPContributionClient.tsx
 
+import PrintButton from "@/components/PrintButton";
 import { useState, useMemo } from "react";
 import { NumericFormat } from "react-number-format";
 
@@ -138,6 +139,10 @@ export default function RRSPContributionClient() {
             </p>
           </div>
         </div>
+            {/* Print button */}
+            <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
+            </div>
 
         {/* RRSP tips banner */}
         <button
@@ -153,7 +158,7 @@ export default function RRSPContributionClient() {
         </button>
 
         {showTips && (
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
+          <div className="print:hidden bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
             {[
               {
                 icon: "👫",

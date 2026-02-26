@@ -2,6 +2,7 @@
 
 // app/calculators/mortgage-refinance/MortgageRefinanceClient.tsx
 
+import PrintButton from "@/components/PrintButton";
 import { useState, useMemo } from "react";
 import { NumericFormat } from "react-number-format";
 
@@ -229,7 +230,7 @@ export default function MortgageRefinanceClient() {
         </button>
 
         {showInfo && (
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
+          <div className="print:hidden bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
             {[
               {
                 icon: "⚖️", title: "3 Months Interest vs IRD — Which Applies?",
@@ -423,6 +424,11 @@ export default function MortgageRefinanceClient() {
             </div>
 
             {/* Key stats */}
+            {/* Print button */}
+            <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
+            </div>
+
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {[
                 { label: "Penalty",          value: `$${fmt(result.penalty)}`,      sub: result.method,                              color: "text-red-500"   },

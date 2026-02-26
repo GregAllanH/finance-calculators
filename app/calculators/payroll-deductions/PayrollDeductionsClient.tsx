@@ -2,6 +2,7 @@
 
 // app/calculators/payroll-deductions/PayrollDeductionsClient.tsx
 
+import PrintButton from "@/components/PrintButton";
 import { useState, useMemo } from "react";
 import { NumericFormat } from "react-number-format";
 
@@ -284,7 +285,7 @@ export default function PayrollDeductionsClient() {
         </div>
 
         {/* Inputs */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-5">
+        <div className="print:hidden bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-5">
           <h2 className="text-base font-semibold text-gray-800">Your Employment Details</h2>
 
           {/* Province */}
@@ -429,6 +430,10 @@ export default function PayrollDeductionsClient() {
                   </div>
                 ))}
               </div>
+            </div>
+            {/* Print button */}
+            <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
             </div>
 
             {/* Key stats */}

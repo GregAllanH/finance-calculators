@@ -2,6 +2,7 @@
 
 // app/calculators/capital-gains/CapitalGainsClient.tsx
 
+import PrintButton from "@/components/PrintButton";
 import { useState, useMemo } from "react";
 import { NumericFormat } from "react-number-format";
 
@@ -192,7 +193,7 @@ export default function CapitalGainsClient() {
         </div>
 
         {/* Inputs */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-5">
+        <div className="print:hidden bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-5">
           <h2 className="text-base font-semibold text-gray-800">Asset Details</h2>
 
           {/* Asset type */}
@@ -441,6 +442,10 @@ export default function CapitalGainsClient() {
                   <p className="text-red-500 text-sm font-medium mt-2">{result.newEffectiveRate.toFixed(1)}% effective rate on gain</p>
                 </div>
               </div>
+            {/* Print button */}
+            <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
+            </div>
               {/* Extra tax callout */}
               <div className={`px-6 py-4 border-t border-gray-100 flex items-center justify-between ${result.extraTax > 0 ? "bg-red-50" : "bg-green-50"}`}>
                 <p className="text-sm font-semibold text-gray-700">

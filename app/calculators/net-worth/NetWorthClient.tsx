@@ -2,6 +2,7 @@
 
 // app/calculators/net-worth/NetWorthClient.tsx
 
+import PrintButton from "@/components/PrintButton";
 import { useState, useMemo } from "react";
 import { NumericFormat } from "react-number-format";
 
@@ -233,7 +234,12 @@ export default function NetWorthClient() {
         </div>
 
         {/* Age group + live net worth sticky bar */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
+                    {/* Print button */}
+            <div className="print:hidden flex justify-end mb-4">
+              <PrintButton label="Print Report" />
+            </div>
+
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Your Age Group</label>

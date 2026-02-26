@@ -2,6 +2,7 @@
 
 // app/calculators/budget-5030/Budget5030Client.tsx
 
+import PrintButton from "@/components/PrintButton";
 import { useState, useMemo } from "react";
 import { NumericFormat } from "react-number-format";
 
@@ -214,7 +215,7 @@ export default function Budget5030Client() {
         </div>
 
         {/* Income inputs */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
+        <div className="print:hidden bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
           <h2 className="text-base font-semibold text-gray-800">Your Income</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -350,6 +351,11 @@ export default function Budget5030Client() {
             </div>
 
             {/* Visual allocation bars */}
+                        {/* Print button */}
+            <div className="print:hidden flex justify-end mb-4">
+              <PrintButton label="Print Report" />
+            </div>
+
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide mb-4">
                 Your Budget vs 50/30/20 Target

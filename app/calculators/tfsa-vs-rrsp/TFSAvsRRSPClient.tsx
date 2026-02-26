@@ -2,6 +2,7 @@
 
 // app/calculators/tfsa-vs-rrsp/TFSAvsRRSPClient.tsx
 
+import PrintButton from "@/components/PrintButton";
 import { useState, useMemo } from "react";
 import { NumericFormat } from "react-number-format";
 
@@ -168,7 +169,7 @@ export default function TFSAvsRRSPClient() {
         </div>
 
         {/* Inputs */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-5">
+        <div className="print:hidden bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-5">
           <h2 className="text-base font-semibold text-gray-800">Your Details</h2>
 
           {/* Province */}
@@ -308,6 +309,11 @@ export default function TFSAvsRRSPClient() {
             </div>
 
             {/* Tax rate context */}
+                        {/* Print button */}
+            <div className="print:hidden flex justify-end mb-4">
+              <PrintButton label="Print Report" />
+            </div>
+
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>

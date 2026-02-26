@@ -2,6 +2,7 @@
 
 // app/calculators/tfsa-growth/TFSAGrowthClient.tsx
 
+import PrintButton from "@/components/PrintButton";
 import { useState, useMemo } from "react";
 import { NumericFormat } from "react-number-format";
 
@@ -202,7 +203,7 @@ export default function TFSAGrowthClient() {
         )}
 
         {/* Inputs */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-5">
+        <div className="print:hidden bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-5">
           <h2 className="text-base font-semibold text-gray-800">Your TFSA Details</h2>
 
           {/* Current balance */}
@@ -383,6 +384,10 @@ export default function TFSAGrowthClient() {
                       />
                     </div>
                   </div>
+            {/* Print button */}
+            <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
+            </div>
                 ))}
               </div>
             </div>

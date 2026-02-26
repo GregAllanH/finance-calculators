@@ -2,6 +2,7 @@
 
 // app/calculators/self-employed-tax/SelfEmployedTaxClient.tsx
 
+import PrintButton from "@/components/PrintButton";
 import { useState, useMemo } from "react";
 import { NumericFormat } from "react-number-format";
 
@@ -288,7 +289,7 @@ export default function SelfEmployedTaxClient() {
         </button>
 
         {showTips && (
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
+          <div className="print:hidden bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
             {[
               {
                 icon: "⚠️", title: "You Pay Both Sides of CPP",
@@ -512,6 +513,10 @@ export default function SelfEmployedTaxClient() {
                   </div>
                 ))}
               </div>
+            </div>
+            {/* Print button */}
+            <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
             </div>
 
             {/* CPP extra burden */}

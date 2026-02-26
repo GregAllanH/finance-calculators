@@ -2,6 +2,7 @@
 
 // app/calculators/debt-payoff/DebtPayoffClient.tsx
 
+import PrintButton from "@/components/PrintButton";
 import { useState, useMemo } from "react";
 import { NumericFormat } from "react-number-format";
 
@@ -277,7 +278,7 @@ export default function DebtPayoffClient() {
         </button>
 
         {showRefinance && (
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
+          <div className="print:hidden bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
             <h3 className="text-sm font-bold text-gray-700 uppercase tracking-wide">Ways to Reduce Your Interest Rate</h3>
             {REFINANCE_INFO.map((item) => (
               <div key={item.title} className="border border-gray-100 rounded-lg p-4">
@@ -448,6 +449,10 @@ export default function DebtPayoffClient() {
                         </p>
                       </div>
                     </div>
+            {/* Print button */}
+            <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
+            </div>
 
                     {/* Interest bar */}
                     <div className="mb-2">

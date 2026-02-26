@@ -3,6 +3,7 @@
 // app/calculators/income-tax/IncomeTaxClient.tsx
 // Place this file at: app/calculators/income-tax/IncomeTaxClient.tsx
 
+import PrintButton from "@/components/PrintButton";
 import { useState, useCallback } from "react";
 import { NumericFormat } from "react-number-format";
 
@@ -423,7 +424,12 @@ export default function IncomeTaxClient() {
       <div className="max-w-4xl mx-auto px-4 py-8 space-y-6">
 
         {/* Input Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 md:p-8">
+                    {/* Print button */}
+            <div className="print:hidden flex justify-end mb-4">
+              <PrintButton label="Print Report" />
+            </div>
+
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 md:p-8">
           <h2 className="text-xl font-semibold text-gray-800 mb-6">Your Income Details</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
