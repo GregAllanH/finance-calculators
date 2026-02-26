@@ -117,11 +117,15 @@ const CATEGORIES = [
         description: 'Calculate compound interest on GICs and high-interest savings accounts. Compare rates, compounding frequencies, and tax impact across account types.',
         badge: 'New',
       },
+      {
+        slug: 'resp',
         href: '/calculators/resp',
         title: 'RESP Calculator',
         description: 'Project RESP growth with CESG grants, Additional CESG, Canada Learning Bond, and Quebec QESI. Includes year-by-year schedule and university cost coverage.',
         badge: 'New',
       },
+      {
+        slug: 'tfsa-growth',
         href: '/calculators/tfsa-growth',
         title: 'TFSA Growth Calculator',
         description: 'Project your TFSA balance with investment type presets, contribution room tracker, tax savings estimate, and year-by-year growth chart.',
