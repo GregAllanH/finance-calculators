@@ -191,7 +191,12 @@ const CATEGORIES = [
     description: 'Plan your retirement income with CPP estimates and savings projections.',
     calculators: [
       {
-        slug: 'oas-gis',
+        slug: 'rrif',
+        href: '/calculators/rrif',
+        title: 'RRIF Withdrawal Calculator',
+        description: 'Calculate mandatory minimum withdrawals by age, tax impact, OAS clawback risk, and how long your RRIF will last. Includes spouse age election and year-by-year schedule.',
+        badge: 'New',
+      },
         href: '/calculators/oas-gis',
         title: 'OAS & GIS Estimator',
         description: 'Estimate your Old Age Security and Guaranteed Income Supplement. Includes clawback, deferral comparison, partner Allowance, and total government retirement income.',
