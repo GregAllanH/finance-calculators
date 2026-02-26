@@ -60,6 +60,8 @@ const CATEGORIES = [
         description: 'Calculate exact take-home pay after income tax, CPP/QPP, EI, RRSP, and benefits. All provinces, all pay frequencies. Includes pay stub view and raise impact.',
         badge: 'New',
       },
+      {
+        slug: 'self-employed-tax',
         href: '/calculators/self-employed-tax',
         title: 'Self-Employed Tax Calculator',
         description: 'Calculate income tax, CPP (both sides), business deductions, and quarterly instalments for Canadian freelancers and business owners.',
