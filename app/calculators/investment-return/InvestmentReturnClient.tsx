@@ -256,20 +256,23 @@ function BarChart({
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function InvestmentReturnClient() {
-  const [lumpSum, setLumpSum] = useState(25000);
-  const [monthlyContrib, setMonthlyContrib] = useState(500);
+  const [lumpSum, setLumpSum] = useState(0);
+  const [monthlyContrib, setMonthlyContrib] = useState(0);
   const [annualReturn, setAnnualReturn] = useState(7.0);
-  const [years, setYears] = useState(25);
+  const [years, setYears] = useState(0);
   const [inflation, setInflation] = useState(2.5);
   const [accountType, setAccountType] = useState<AccountType>("tfsa");
   const [returnType, setReturnType] = useState<ReturnType>("growth");
   const [province, setProvince] = useState("ON");
-  const [personalIncome, setPersonalIncome] = useState(85000);
+  const [personalIncome, setPersonalIncome] = useState(0);
   const [rrspRefundReinvested, setRrspRefundReinvested] = useState(true);
   const [compareMode, setCompareMode] = useState<"none" | "account" | "rate" | "lumpvsdca">("none");
   const [compareRate, setCompareRate] = useState(5.0);
   const [showTable, setShowTable] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+
+  // Gate results until lump sum or monthly contrib and years are entered
+  const hasResults = (lumpSum > 0 || monthlyContrib > 0) && years > 0;
 
   const marginalRate = useMemo(() => getMarginalRate(personalIncome, province), [personalIncome, province]);
 
@@ -346,39 +349,6 @@ export default function InvestmentReturnClient() {
             <p>Use the <strong>Compare</strong> section to run side-by-side scenarios — different rates, account types, or lump sum vs DCA.</p>
           </div>
         )}
-      </div>
-
-      {/* Hero */}
-      <div className="bg-blue-600 text-white rounded-xl p-6 text-center">
-        <div className="text-sm font-medium text-blue-200 mb-1">
-          Portfolio Value in {years} Years ({accountType.toUpperCase()})
-        </div>
-        <div className="text-5xl font-black mb-1">{fmt(last?.balance ?? 0)}</div>
-        <div className="text-blue-200 text-sm">
-          Real value: {fmt(last?.realBalance ?? 0)} · Total contributed: {fmt(totalContributed)} · Growth: {fmt(totalGrowth)}
-        </div>
-      </div>
-
-      <PrintButton />
-
-      {/* Stat Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 text-center">
-          <div className="text-xs text-gray-500 mb-1">Total Contributed</div>
-          <div className="text-xl font-bold text-gray-800">{fmt(totalContributed)}</div>
-        </div>
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 text-center">
-          <div className="text-xs text-gray-500 mb-1">Investment Growth</div>
-          <div className="text-xl font-bold text-green-600">+{fmt(totalGrowth)}</div>
-        </div>
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 text-center">
-          <div className="text-xs text-gray-500 mb-1">Total Return</div>
-          <div className="text-xl font-bold text-gray-800">{effectiveReturn.toFixed(0)}%</div>
-        </div>
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 text-center">
-          <div className="text-xs text-gray-500 mb-1">Inflation-Adj. Value</div>
-          <div className="text-xl font-bold text-gray-800">{fmt(last?.realBalance ?? 0)}</div>
-        </div>
       </div>
 
       {/* Inputs */}
@@ -492,6 +462,49 @@ export default function InvestmentReturnClient() {
               onChange={e => setInflation(Number(e.target.value))}
               className="w-full accent-blue-600" />
           </div>
+        </div>
+      </div>
+
+      {/* Results — shown only once lump sum or contributions and years are entered */}
+      {!hasResults && (
+        <div className="bg-gray-50 border border-dashed border-gray-300 rounded-xl p-8 text-center text-gray-400">
+          <div className="text-3xl mb-2">📊</div>
+          <div className="font-medium">Enter an initial investment or monthly contribution and a time horizon above to see your projection</div>
+        </div>
+      )}
+
+      {hasResults && <>
+
+      {/* Hero */}
+      <div className="bg-blue-600 text-white rounded-xl p-6 text-center">
+        <div className="text-sm font-medium text-blue-200 mb-1">
+          Portfolio Value in {years} Years ({accountType.toUpperCase()})
+        </div>
+        <div className="text-5xl font-black mb-1">{fmt(last?.balance ?? 0)}</div>
+        <div className="text-blue-200 text-sm">
+          Real value: {fmt(last?.realBalance ?? 0)} · Total contributed: {fmt(totalContributed)} · Growth: {fmt(totalGrowth)}
+        </div>
+      </div>
+
+      <PrintButton />
+
+      {/* Stat Cards */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 text-center">
+          <div className="text-xs text-gray-500 mb-1">Total Contributed</div>
+          <div className="text-xl font-bold text-gray-800">{fmt(totalContributed)}</div>
+        </div>
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 text-center">
+          <div className="text-xs text-gray-500 mb-1">Investment Growth</div>
+          <div className="text-xl font-bold text-green-600">+{fmt(totalGrowth)}</div>
+        </div>
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 text-center">
+          <div className="text-xs text-gray-500 mb-1">Total Return</div>
+          <div className="text-xl font-bold text-gray-800">{effectiveReturn.toFixed(0)}%</div>
+        </div>
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 text-center">
+          <div className="text-xs text-gray-500 mb-1">Inflation-Adj. Value</div>
+          <div className="text-xl font-bold text-gray-800">{fmt(last?.realBalance ?? 0)}</div>
         </div>
       </div>
 
@@ -646,6 +659,8 @@ export default function InvestmentReturnClient() {
           </div>
         )}
       </div>
+
+      </>}
 
       {/* Doubling Rule / Quick Facts */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
