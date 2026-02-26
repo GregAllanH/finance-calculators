@@ -229,7 +229,7 @@ export default function RRIFClient() {
         age,
         startBalance:    Math.round(balance),
         growth:          Math.round(growth),
-        minWithdrawal:   Math.round(minWithdrawal),
+        minWithdrawal:   Math.round(minWithdraw),
         totalWithdrawal: Math.round(totalWithdraw),
         tax:             Math.round(totalTax),
         afterTaxIncome:  Math.round(Math.max(0, afterTax)),
