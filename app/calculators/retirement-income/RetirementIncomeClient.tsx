@@ -109,22 +109,22 @@ function fmtPct(n: number): string {
 
 export default function RetirementIncomeClient() {
   // Personal
-  const [currentAge, setCurrentAge] = useState(55);
-  const [retirementAge, setRetirementAge] = useState(65);
+  const [currentAge, setCurrentAge] = useState(0);
+  const [retirementAge, setRetirementAge] = useState(0);
   const [province, setProvince] = useState("ON");
 
   // RRSP/RRIF
-  const [rrifBalance, setRrifBalance] = useState(500000);
+  const [rrifBalance, setRrifBalance] = useState(0);
   const [rrifReturn, setRrifReturn] = useState(5.0);
 
   // TFSA
-  const [tfsaBalance, setTfsaBalance] = useState(100000);
+  const [tfsaBalance, setTfsaBalance] = useState(0);
   const [tfsaReturn, setTfsaReturn] = useState(5.0);
   const [tfsaMonthly, setTfsaMonthly] = useState(0);
 
   // Government benefits
-  const [cppMonthly, setCppMonthly] = useState(900);
-  const [oasMonthly, setOasMonthly] = useState(718);
+  const [cppMonthly, setCppMonthly] = useState(0);
+  const [oasMonthly, setOasMonthly] = useState(0);
   const [cppStartAge, setCppStartAge] = useState(65);
   const [oasStartAge, setOasStartAge] = useState(65);
 
@@ -134,18 +134,24 @@ export default function RetirementIncomeClient() {
 
   // Spouse
   const [hasSpouse, setHasSpouse] = useState(false);
-  const [spouseAge, setSpouseAge] = useState(55);
-  const [spouseCpp, setSpouseCpp] = useState(600);
-  const [spouseOas, setSpouseOas] = useState(718);
+  const [spouseAge, setSpouseAge] = useState(0);
+  const [spouseCpp, setSpouseCpp] = useState(0);
+  const [spouseOas, setSpouseOas] = useState(0);
   const [spouseCppAge, setSpouseCppAge] = useState(65);
   const [spouseOasAge, setSpouseOasAge] = useState(65);
-  const [spouseRrif, setSpouseRrif] = useState(200000);
+  const [spouseRrif, setSpouseRrif] = useState(0);
   const [spousePension, setSpousePension] = useState(0);
 
   // Settings
   const [inflation, setInflation] = useState(2.5);
   const [showTable, setShowTable] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+
+  // Results gate — require ages and at least one income source
+  const hasResults =
+    currentAge > 0 &&
+    retirementAge > currentAge &&
+    (rrifBalance > 0 || tfsaBalance > 0 || cppMonthly > 0 || oasMonthly > 0 || pensionMonthly > 0 || otherMonthly > 0);
 
   // ─── Projection ─────────────────────────────────────────────────────────────
 
@@ -284,54 +290,6 @@ export default function RetirementIncomeClient() {
           </div>
         )}
       </div>
-
-      {/* Hero */}
-      <div className="bg-blue-600 text-white rounded-xl p-6 text-center">
-        <div className="text-sm font-medium text-blue-200 mb-1">First Year Net Retirement Income</div>
-        <div className="text-5xl font-black mb-1">{fmt(firstYear?.netIncome ?? 0)}</div>
-        <div className="text-blue-200 text-sm">
-          {fmt((firstYear?.netIncome ?? 0) / 12)}/month · Gross {fmt(firstYear?.grossIncome ?? 0)} · Tax {fmt(firstYear?.incomeTax ?? 0)}
-        </div>
-      </div>
-
-      <PrintButton />
-
-      {/* 4 Stat Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 text-center">
-          <div className="text-xs text-gray-500 mb-1">RRIF at Retirement</div>
-          <div className="text-xl font-bold text-gray-800">{fmt(rrifAtRetirement)}</div>
-          <div className="text-xs text-gray-400 mt-0.5">at age {retirementAge}</div>
-        </div>
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 text-center">
-          <div className="text-xs text-gray-500 mb-1">TFSA at Retirement</div>
-          <div className="text-xl font-bold text-gray-800">{fmt(tfsaAtRetirement)}</div>
-          <div className="text-xs text-gray-400 mt-0.5">at age {retirementAge}</div>
-        </div>
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 text-center">
-          <div className="text-xs text-gray-500 mb-1">Net Income at 75</div>
-          <div className="text-xl font-bold text-gray-800">{fmt(age75Row?.netIncome ?? 0)}</div>
-          <div className="text-xs text-gray-400 mt-0.5">{fmt((age75Row?.netIncome ?? 0) / 12)}/mo</div>
-        </div>
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 text-center">
-          <div className="text-xs text-gray-500 mb-1">RRIF Balance at 85</div>
-          <div className="text-xl font-bold text-gray-800">{fmt(age85Row?.rrifBalance ?? 0)}</div>
-          <div className="text-xs text-gray-400 mt-0.5">combined</div>
-        </div>
-      </div>
-
-      {/* OAS Clawback Warning */}
-      {hasClawbackRisk && (
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-start gap-3">
-          <span className="text-2xl">⚠️</span>
-          <div>
-            <div className="font-semibold text-amber-800 text-sm">OAS Clawback Risk Detected</div>
-            <div className="text-amber-700 text-sm mt-0.5">
-              Starting at age {oasClawbackYear?.age}, your income exceeds the {fmt(OAS_CLAWBACK_THRESHOLD)} OAS clawback threshold. You may lose up to {fmt(oasClawbackYear?.oasClawback ?? 0)}/year in OAS benefits. Consider drawing down RRIF faster in early retirement or using TFSA withdrawals to manage taxable income.
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Inputs */}
       <div className="print:hidden bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-6">
@@ -533,6 +491,64 @@ export default function RetirementIncomeClient() {
         </div>
       </div>
 
+      {/* Results — only shown once sufficient data entered */}
+      {!hasResults && (
+        <div className="bg-gray-50 border border-dashed border-gray-300 rounded-xl p-8 text-center text-gray-400">
+          <div className="text-3xl mb-2">📊</div>
+          <div className="font-medium">Enter your ages and at least one income source above to see your retirement projection</div>
+        </div>
+      )}
+
+      {hasResults && <>
+
+      {/* Hero */}
+      <div className="bg-blue-600 text-white rounded-xl p-6 text-center">
+        <div className="text-sm font-medium text-blue-200 mb-1">First Year Net Retirement Income</div>
+        <div className="text-5xl font-black mb-1">{fmt(firstYear?.netIncome ?? 0)}</div>
+        <div className="text-blue-200 text-sm">
+          {fmt((firstYear?.netIncome ?? 0) / 12)}/month · Gross {fmt(firstYear?.grossIncome ?? 0)} · Tax {fmt(firstYear?.incomeTax ?? 0)}
+        </div>
+      </div>
+
+      <PrintButton />
+
+      {/* 4 Stat Cards */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 text-center">
+          <div className="text-xs text-gray-500 mb-1">RRIF at Retirement</div>
+          <div className="text-xl font-bold text-gray-800">{fmt(rrifAtRetirement)}</div>
+          <div className="text-xs text-gray-400 mt-0.5">at age {retirementAge}</div>
+        </div>
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 text-center">
+          <div className="text-xs text-gray-500 mb-1">TFSA at Retirement</div>
+          <div className="text-xl font-bold text-gray-800">{fmt(tfsaAtRetirement)}</div>
+          <div className="text-xs text-gray-400 mt-0.5">at age {retirementAge}</div>
+        </div>
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 text-center">
+          <div className="text-xs text-gray-500 mb-1">Net Income at 75</div>
+          <div className="text-xl font-bold text-gray-800">{fmt(age75Row?.netIncome ?? 0)}</div>
+          <div className="text-xs text-gray-400 mt-0.5">{fmt((age75Row?.netIncome ?? 0) / 12)}/mo</div>
+        </div>
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 text-center">
+          <div className="text-xs text-gray-500 mb-1">RRIF Balance at 85</div>
+          <div className="text-xl font-bold text-gray-800">{fmt(age85Row?.rrifBalance ?? 0)}</div>
+          <div className="text-xs text-gray-400 mt-0.5">combined</div>
+        </div>
+      </div>
+
+      {/* OAS Clawback Warning */}
+      {hasClawbackRisk && (
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-start gap-3">
+          <span className="text-2xl">⚠️</span>
+          <div>
+            <div className="font-semibold text-amber-800 text-sm">OAS Clawback Risk Detected</div>
+            <div className="text-amber-700 text-sm mt-0.5">
+              Starting at age {oasClawbackYear?.age}, your income exceeds the {fmt(OAS_CLAWBACK_THRESHOLD)} OAS clawback threshold. You may lose up to {fmt(oasClawbackYear?.oasClawback ?? 0)}/year in OAS benefits. Consider drawing down RRIF faster in early retirement or using TFSA withdrawals to manage taxable income.
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Income Breakdown — First Year */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
         <h2 className="text-lg font-bold text-gray-800 mb-4">First Year Income Breakdown (Age {retirementAge})</h2>
@@ -645,6 +661,8 @@ export default function RetirementIncomeClient() {
           </div>
         )}
       </div>
+
+      </>}
 
       {/* Strategy Tips */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-4">
