@@ -166,6 +166,13 @@ const CATEGORIES = [
         description: 'Side-by-side after-tax comparison, break-even retirement rate, refund reinvestment strategy, and a personalized recommendation for your income and province.',
         badge: 'New',
       },
+      {
+        slug: 'investment-return',
+        href: '/calculators/investment-return',
+        title: 'Investment Return Calculator',
+        description: 'Project portfolio growth with lump sum and monthly contributions. Compare TFSA, RRSP, and taxable accounts with inflation-adjusted returns, tax drag, and scenario comparisons.',
+        badge: 'New',
+      },
     ],
   },
   {
