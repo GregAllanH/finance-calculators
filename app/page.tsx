@@ -38,6 +38,8 @@ const CATEGORIES = [
         description: 'Should you break your mortgage early? Calculate the IRD penalty, total costs, monthly savings, and exact break-even point. Big bank vs monoline comparison.',
         badge: 'New',
       },
+      {
+        slug: 'mortgage-comparison',
         href: '/calculators/mortgage-comparison',
         title: 'Amortization Period Comparison',
         description: 'Compare 15, 20, 25, and 30-year amortization side by side — see total interest paid and monthly payment differences.',
