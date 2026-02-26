@@ -71,9 +71,11 @@ const CATEGORIES = [
         slug: 'rental-income-tax',
         href: '/calculators/rental-income-tax',
         title: 'Rental Income Tax Calculator',
-        description: 'Calculate net rental income, deductible expenses, CCA depreciation, and tax owing on your Canadian rental property. Covers T776, rental losses, and partial use.',
+        description: 'Calculate tax on rental income after expenses, CCA, and deductions. See your net rental income, marginal rate, and year-over-year cash flow across all provinces.',
         badge: 'New',
       },
+      {
+        slug: 'payroll-deductions',
         href: '/calculators/payroll-deductions',
         title: 'Payroll Deductions Calculator',
         description: 'Calculate exact take-home pay after income tax, CPP/QPP, EI, RRSP, and benefits. All provinces, all pay frequencies. Includes pay stub view and raise impact.',
