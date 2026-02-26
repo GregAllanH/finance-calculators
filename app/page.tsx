@@ -116,6 +116,13 @@ const CATEGORIES = [
         description: 'Calculate your federal + provincial donation tax credit. See what your generosity truly costs after tax — and why donating securities beats cash.',
         badge: 'New',
       },
+      {
+        slug: 'cra-instalments',
+        href: '/calculators/cra-instalments',
+        title: 'CRA Instalment Payment Calculator',
+        description: 'Calculate your quarterly CRA tax instalments for 2025. Compare all three CRA methods, get your payment schedule, penalty estimates, and self-employed CPP breakdown.',
+        badge: 'New',
+      },
     ],
   },
   {
