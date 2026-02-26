@@ -11,7 +11,12 @@ const CATEGORIES = [
     description: 'Calculate payments, compare amortization periods, and find out what you can afford.',
     calculators: [
       {
-        slug: 'mortgage-payment',
+        slug: 'affordability-by-city',
+        href: '/calculators/affordability-by-city',
+        title: 'Home Affordability by City',
+        description: 'Compare home affordability across 20 Canadian cities. See where you qualify, monthly costs, income needed, and land transfer tax — side by side.',
+        badge: 'New',
+      },
         href: '/calculators/mortgage-payment',
         title: 'Mortgage Payment Calculator',
         description: 'Calculate your monthly payment, CMHC insurance, stress test, total interest, and full amortization schedule.',
