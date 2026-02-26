@@ -310,7 +310,7 @@ export default function InvestmentReturnClient() {
     return "";
   }, [compareMode, compareRate, accountType]);
 
-  const last = mainRows[mainRows.length - 1];
+  const last = hasResults ? mainRows[mainRows.length - 1] : undefined;
   const totalContributed = last?.totalContributed ?? 0;
   const totalGrowth = (last?.balance ?? 0) - totalContributed;
   const effectiveReturn = totalContributed > 0 ? ((last?.balance ?? 0) / totalContributed - 1) * 100 : 0;
@@ -318,19 +318,22 @@ export default function InvestmentReturnClient() {
     ? (Math.pow((last?.balance ?? 1) / (lumpSum || 1), 1 / years) - 1) * 100
     : annualReturn;
 
-  // Scenario rows for rate comparison table
-  const scenarios = [
+  // Scenario rows for rate comparison table — only computed when hasResults
+  const scenarios = hasResults ? [
     { label: "Conservative (4%)", rows: project(lumpSum, monthlyContrib, 4, years, inflation, accountType, returnType, marginalRate, rrspRefundReinvested) },
     { label: `Your Rate (${annualReturn}%)`, rows: mainRows },
     { label: "Optimistic (10%)", rows: project(lumpSum, monthlyContrib, 10, years, inflation, accountType, returnType, marginalRate, rrspRefundReinvested) },
-  ];
+  ] : [];
 
-  // Account type comparison
-  const accountComparison = useMemo(() => [
-    { label: "TFSA", rows: project(lumpSum, monthlyContrib, annualReturn, years, inflation, "tfsa", returnType, marginalRate, false) },
-    { label: "RRSP", rows: project(lumpSum, monthlyContrib, annualReturn, years, inflation, "rrsp", returnType, marginalRate, true) },
-    { label: "Taxable", rows: project(lumpSum, monthlyContrib, annualReturn, years, inflation, "taxable", returnType, marginalRate, false) },
-  ], [lumpSum, monthlyContrib, annualReturn, years, inflation, returnType, marginalRate]);
+  // Account type comparison — only computed when hasResults
+  const accountComparison = useMemo(() => {
+    if (!hasResults) return [];
+    return [
+      { label: "TFSA", rows: project(lumpSum, monthlyContrib, annualReturn, years, inflation, "tfsa", returnType, marginalRate, false) },
+      { label: "RRSP", rows: project(lumpSum, monthlyContrib, annualReturn, years, inflation, "rrsp", returnType, marginalRate, true) },
+      { label: "Taxable", rows: project(lumpSum, monthlyContrib, annualReturn, years, inflation, "taxable", returnType, marginalRate, false) },
+    ];
+  }, [hasResults, lumpSum, monthlyContrib, annualReturn, years, inflation, returnType, marginalRate]);
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 space-y-6">
