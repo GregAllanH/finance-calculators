@@ -75,6 +75,13 @@ const CATEGORIES = [
         badge: 'New',
       },
       {
+        slug: 'salary-vs-dividend',
+        href: '/calculators/salary-vs-dividend',
+        title: 'Salary vs Dividend Calculator',
+        description: 'Find the optimal pay mix for your Canadian corporation. Compare after-tax income, RRSP room, CPP trade-offs, and total tax burden for all provinces. 2025 rates.',
+        badge: 'New',
+      },
+      {
         slug: 'payroll-deductions',
         href: '/calculators/payroll-deductions',
         title: 'Payroll Deductions Calculator',
@@ -223,6 +230,13 @@ const CATEGORIES = [
         href: '/calculators/cpp-benefits',
         title: 'CPP Benefits Estimator',
         description: 'Estimate your monthly CPP payments at 60, 65, or 70. Find your breakeven age and maximize your lifetime benefit.',
+        badge: 'New',
+      },
+      {
+        slug: 'retirement-income',
+        href: '/calculators/retirement-income',
+        title: 'Retirement Income Calculator',
+        description: 'Project your retirement income from RRIF, CPP, OAS, TFSA, and pension. Year-by-year drawdown to age 95, OAS clawback warnings, pension income splitting, and spouse scenarios.',
         badge: 'New',
       },
     ],
