@@ -1,6 +1,6 @@
 // app/calculators/mortgage-refinance/page.tsx
 
-import MortgageRefinanceClient from "./MortgageRefinanceClient";
+import Client from "./Client";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function MortgageRefinancePage() {
-  return <MortgageRefinanceClient />;
+  return <Client />;
 }
