@@ -234,8 +234,8 @@ export default function NetWorthClient() {
         </div>
 
         {/* Age group + live net worth sticky bar */}
-                    {/* Print button */}
-            <div className="print:hidden flex justify-end mb-4">
+
+                        <div className="print:hidden flex justify-end">
               <PrintButton label="Print Report" />
             </div>
 

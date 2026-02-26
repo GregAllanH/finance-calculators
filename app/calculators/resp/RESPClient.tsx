@@ -416,7 +416,11 @@ export default function RESPClient() {
         </div>
 
         {/* Results */}
-        {!result ? (
+                    <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
+            </div>
+
+            {!result ? (
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12 text-center">
             <div className="text-5xl mb-4">🎓</div>
             <p className="text-xl font-semibold text-gray-700">Enter your child's age and contribution above</p>
@@ -481,10 +485,6 @@ export default function RESPClient() {
                   ))}
                 </div>
               </div>
-            {/* Print button */}
-            <div className="print:hidden flex justify-end">
-              <PrintButton label="Print Report" />
-            </div>
             )}
 
             {/* CLB notice for eligible */}

@@ -170,7 +170,11 @@ export default function CPPClient() {
         </div>
 
         {/* Results */}
-        {result === null ? (
+                    <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
+            </div>
+
+            {result === null ? (
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12 text-center">
             <div className="text-5xl mb-4">🍁</div>
             <p className="text-xl font-semibold text-gray-700">Enter your details above</p>
@@ -221,10 +225,6 @@ export default function CPPClient() {
                   +42% increase
                 </p>
               </div>
-            </div>
-            {/* Print button */}
-            <div className="print:hidden flex justify-end">
-              <PrintButton label="Print Report" />
             </div>
 
             {/* Breakeven ages */}

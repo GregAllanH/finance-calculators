@@ -371,7 +371,11 @@ export default function CapitalGainsClient() {
         </div>
 
         {/* Results */}
-        {result === null ? (
+                    <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
+            </div>
+
+            {result === null ? (
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12 text-center">
             <div className="text-5xl mb-4">📈</div>
             <p className="text-xl font-semibold text-gray-700">Enter your asset details above</p>
@@ -442,10 +446,6 @@ export default function CapitalGainsClient() {
                   <p className="text-red-500 text-sm font-medium mt-2">{result.newEffectiveRate.toFixed(1)}% effective rate on gain</p>
                 </div>
               </div>
-            {/* Print button */}
-            <div className="print:hidden flex justify-end">
-              <PrintButton label="Print Report" />
-            </div>
               {/* Extra tax callout */}
               <div className={`px-6 py-4 border-t border-gray-100 flex items-center justify-between ${result.extraTax > 0 ? "bg-red-50" : "bg-green-50"}`}>
                 <p className="text-sm font-semibold text-gray-700">

@@ -262,7 +262,11 @@ export default function AffordabilityByCityClient() {
         </div>
 
         {/* Results */}
-        {!allResults ? (
+                    <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
+            </div>
+
+            {!allResults ? (
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12 text-center">
             <div className="text-5xl mb-4">🏙️</div>
             <p className="text-xl font-semibold text-gray-700">Enter your income and down payment above</p>
@@ -272,10 +276,6 @@ export default function AffordabilityByCityClient() {
           <>
             {/* Summary */}
             {summary && (
-              {/* Print button */}
-            <div className="print:hidden flex justify-end">
-              <PrintButton label="Print Report" />
-            </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {[

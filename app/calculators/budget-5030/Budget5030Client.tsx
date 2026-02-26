@@ -165,7 +165,11 @@ export default function Budget5030Client() {
         </button>
 
         {/* Progress bar */}
-        {result && (
+                    <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
+            </div>
+
+            {result && (
           <div className="px-6 pb-3">
             <div className="flex justify-between text-xs text-gray-400 mb-1">
               <span>{fmtPct(actualPct)}% of take-home</span>
@@ -351,10 +355,6 @@ export default function Budget5030Client() {
             </div>
 
             {/* Visual allocation bars */}
-                        {/* Print button */}
-            <div className="print:hidden flex justify-end mb-4">
-              <PrintButton label="Print Report" />
-            </div>
 
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide mb-4">

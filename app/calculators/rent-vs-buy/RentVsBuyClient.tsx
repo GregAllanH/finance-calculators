@@ -541,7 +541,11 @@ export default function RentVsBuyClient() {
         </div>
 
         {/* Results */}
-        {result === null ? (
+                    <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
+            </div>
+
+            {result === null ? (
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12 text-center">
             <div className="text-5xl mb-4">🏠</div>
             <p className="text-xl font-semibold text-gray-700">Enter your details above</p>
@@ -561,10 +565,6 @@ export default function RentVsBuyClient() {
                 <p className="text-4xl font-bold text-gray-900 mt-2">${fmt(result.monthlyRentCost)}</p>
                 <p className="text-gray-400 text-sm mt-1">rent + renter's insurance</p>
               </div>
-            </div>
-            {/* Print button */}
-            <div className="print:hidden flex justify-end">
-              <PrintButton label="Print Report" />
             </div>
 
             {/* Monthly diff callout */}

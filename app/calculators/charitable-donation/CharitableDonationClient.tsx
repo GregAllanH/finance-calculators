@@ -346,7 +346,11 @@ export default function CharitableDonationClient() {
         </div>
 
         {/* Results */}
-        {result === null ? (
+                    <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
+            </div>
+
+            {result === null ? (
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12 text-center">
             <div className="text-5xl mb-4">❤️</div>
             <p className="text-xl font-semibold text-gray-700">Enter your income and donations above</p>
@@ -371,10 +375,6 @@ export default function CharitableDonationClient() {
                 <p className="text-3xl font-bold text-green-600 mt-2">{fmtPct(result.effectiveRate)}%</p>
                 <p className="text-gray-400 text-sm mt-1">of total donated</p>
               </div>
-            </div>
-            {/* Print button */}
-            <div className="print:hidden flex justify-end">
-              <PrintButton label="Print Report" />
             </div>
 
             {/* Limit warning */}

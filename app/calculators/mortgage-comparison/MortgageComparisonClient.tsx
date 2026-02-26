@@ -202,7 +202,11 @@ export default function MortgageComparisonClient() {
         </div>
 
         {/* Empty state */}
-        {!hasResults ? (
+                    <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
+            </div>
+
+            {!hasResults ? (
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12 text-center">
             <div className="text-5xl mb-4">🏠</div>
             <p className="text-xl font-semibold text-gray-700">Enter your mortgage details above</p>
@@ -256,10 +260,6 @@ export default function MortgageComparisonClient() {
             </div>
 
             {/* Monthly payment comparison bar */}
-                        {/* Print button */}
-            <div className="print:hidden flex justify-end mb-4">
-              <PrintButton label="Print Report" />
-            </div>
 
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide mb-4">

@@ -282,7 +282,11 @@ export default function TFSAvsRRSPClient() {
         </div>
 
         {/* Results */}
-        {!result ? (
+                    <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
+            </div>
+
+            {!result ? (
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12 text-center">
             <div className="text-5xl mb-4">⚖️</div>
             <p className="text-xl font-semibold text-gray-700">Enter your details above</p>
@@ -309,10 +313,6 @@ export default function TFSAvsRRSPClient() {
             </div>
 
             {/* Tax rate context */}
-                        {/* Print button */}
-            <div className="print:hidden flex justify-end mb-4">
-              <PrintButton label="Print Report" />
-            </div>
 
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5">
               <div className="grid grid-cols-3 gap-4 text-center">

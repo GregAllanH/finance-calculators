@@ -358,7 +358,11 @@ export default function MaxAffordabilityClient() {
         </div>
 
         {/* Results */}
-        {result === null ? (
+                    <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
+            </div>
+
+            {result === null ? (
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12 text-center">
             <div className="text-5xl mb-4">🏠</div>
             <p className="text-xl font-semibold text-gray-700">Enter your income and down payment above</p>
@@ -438,10 +442,6 @@ export default function MaxAffordabilityClient() {
                         <span className="text-gray-400 text-xs ml-1">/ {(row.limit * 100).toFixed(0)}% max</span>
                       </div>
                     </div>
-            {/* Print button */}
-            <div className="print:hidden flex justify-end">
-              <PrintButton label="Print Report" />
-            </div>
                     <div className="h-3 bg-gray-100 rounded-full overflow-hidden relative">
                       <div
                         className={`h-full ${row.color} rounded-full transition-all duration-500`}

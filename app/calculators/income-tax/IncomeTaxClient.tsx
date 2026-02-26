@@ -424,10 +424,6 @@ export default function IncomeTaxClient() {
       <div className="max-w-4xl mx-auto px-4 py-8 space-y-6">
 
         {/* Input Card */}
-                    {/* Print button */}
-            <div className="print:hidden flex justify-end mb-4">
-              <PrintButton label="Print Report" />
-            </div>
 
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 md:p-8">
           <h2 className="text-xl font-semibold text-gray-800 mb-6">Your Income Details</h2>
@@ -491,7 +487,11 @@ export default function IncomeTaxClient() {
         </div>
 
         {/* Results */}
-        {result === null ? (
+                    <div className="print:hidden flex justify-end">
+              <PrintButton label="Print Report" />
+            </div>
+
+            {result === null ? (
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-12 text-center">
             <div className="text-5xl mb-4">🍁</div>
             <p className="text-xl font-semibold text-gray-700">Enter your income and province above</p>
