@@ -210,6 +210,13 @@ const CATEGORIES = [
         description: 'See how fast you can get debt-free. Compare avalanche vs snowball strategies, extra payment impact, and refinancing options.',
         badge: 'New',
       },
+      {
+        slug: 'auto-loan',
+        href: '/calculators/auto-loan',
+        title: 'Auto Loan Calculator',
+        description: 'Calculate your monthly car payment, total interest, and true cost of ownership. Includes provincial sales tax, loan term comparison, down payment impact, and extra payment savings.',
+        badge: 'New',
+      },
     ],
   },
   {
