@@ -129,6 +129,12 @@ const CATEGORIES = [
         title: 'Political Contribution Tax Credit Calculator',
         description: 'Calculate your federal and provincial political contribution tax credits. See the three-tier federal credit structure and your true net cost — often just 25 cents on the dollar.',
         badge: 'New',
+      },{
+        slug: 'cerb-repayment',
+        href: '/calculators/cerb-repayment',
+        title: 'CERB Repayment Calculator',
+        description: 'Calculate your outstanding CERB balance, the tax deduction you\'ll receive when you repay, your true net out-of-pocket cost, and monthly payment plan options.',
+        badge: 'New',
       },
     ],
   },
