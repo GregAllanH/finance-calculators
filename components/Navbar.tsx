@@ -29,10 +29,10 @@ export default function Navbar() {
           {/* Right side nav links */}
           <div className="flex items-center gap-6">
             <Link
-              href="/tax-deadlines-2025"
+              href="/tax-deadlines-2026"
               className="hidden sm:inline-flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-3 py-1.5 rounded-full transition-colors"
             >
-              <span>📅</span> Tax Deadlines 2025
+              <span>📅</span> Tax Deadlines 2026
             </Link>
             <Link
               href="/"

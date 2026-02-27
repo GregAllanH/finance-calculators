@@ -44,7 +44,7 @@ const FOOTER_LINKS = [
   {
     heading: "Resources",
     links: [
-      { href: "/tax-deadlines-2025", label: "📅 Tax Deadlines 2025" },
+      { href: "/tax-deadlines-2026", label: "📅 Tax Deadlines 2026" },
       { href: "/calculators/budget-5030", label: "50/30/20 Budget" },
       { href: "/calculators/net-worth", label: "Net Worth Calculator" },
       { href: "/calculators/emergency-fund", label: "Emergency Fund" },
@@ -65,13 +65,13 @@ export default function Footer() {
       <div className="border-b border-[#1a3260]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="text-sm text-blue-200">
-            <span className="font-bold text-white">📅 Key 2025 dates:</span>
-            {" "}RRSP deadline <span className="text-red-400 font-semibold">Mar 3</span>
+            <span className="font-bold text-white">📅 Key 2026 dates:</span>
+            {" "}RRSP deadline <span className="text-red-400 font-semibold">Mar 2</span>
             {" · "}Tax filing <span className="text-red-400 font-semibold">Apr 30</span>
             {" · "}Self-employed filing <span className="text-red-400 font-semibold">Jun 15</span>
           </div>
           <Link
-            href="/tax-deadlines-2025"
+            href="/tax-deadlines-2026"
             className="shrink-0 bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-full transition-colors"
           >
             See All Tax Deadlines →
