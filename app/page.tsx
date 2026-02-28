@@ -140,6 +140,11 @@ const CATEGORIES = [
         description: "First Canadian tax return — world income, partial year, T1135, benefits",
         href: "/calculators/newcomer-tax",
         icon: "🍁",
+      },{
+        title: "First Time Tax Filer",
+        description: "Students, first jobs, gig workers — refund, tuition credits, GST, TFSA",
+        href: "/calculators/first-time-filer",
+        icon: "📄",
       },
     ],
   },
