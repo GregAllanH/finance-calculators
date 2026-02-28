@@ -135,6 +135,11 @@ const CATEGORIES = [
         title: 'CERB Repayment Calculator',
         description: 'Calculate your outstanding CERB balance, the tax deduction you\'ll receive when you repay, your true net out-of-pocket cost, and monthly payment plan options.',
         badge: 'New',
+      },{
+        title: "Newcomer to Canada Tax",
+        description: "First Canadian tax return — world income, partial year, T1135, benefits",
+        href: "/calculators/newcomer-tax",
+        icon: "🍁",
       },
     ],
   },
